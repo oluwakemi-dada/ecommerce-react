@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
-import type { FC } from 'react';
+import { type FC } from 'react';
 import { Link, useParams } from 'react-router';
 import { Row, Col, Image, ListGroup, Card, Button } from 'react-bootstrap';
 
 import Rating from '../components/Rating';
-import type { Product } from '../types';
+import { type Product } from '../types';
 import axios from 'axios';
 
 const ProductScreen: FC = () => {

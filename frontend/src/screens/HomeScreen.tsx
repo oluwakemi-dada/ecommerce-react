@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
-import type { FC } from 'react';
+import { type FC } from 'react';
 import { Row, Col } from 'react-bootstrap';
 import axios from 'axios';
 
-import type { Product as ProductType } from '../types';
+import { type Product as ProductType } from '../types';
 import Product from '../components/Product';
 
 const HomeScreen: FC = () => {
