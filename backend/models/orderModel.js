@@ -16,7 +16,7 @@ const orderSchema = new mongoose.Schema(
         product: {
           type: mongoose.Schema.Types.ObjectId,
           required: true,
-          ref: Product,
+          ref: 'Product',
         },
       },
     ],
@@ -57,7 +57,7 @@ const orderSchema = new mongoose.Schema(
       default: 0.0,
     },
     isPaid: {
-      tyoe: Boolean,
+      type: Boolean,
       required: true,
       default: false,
     },
