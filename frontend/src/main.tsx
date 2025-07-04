@@ -1,6 +1,8 @@
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import { BrowserRouter, Routes, Route } from 'react-router';
+import { Provider } from 'react-redux';
+import store from './store.ts';
 
 import './assets/styles/bootstrap.custom.css';
 import './assets/styles/index.css';
@@ -11,13 +13,15 @@ import ProductScreen from './screens/ProductScreen.tsx';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <BrowserRouter>
-      <Routes>
-        <Route path='/' element={<App />}>
-          <Route index={true} element={<HomeScreen />} />
-          <Route path='/product/:id' element={<ProductScreen />} />
-        </Route>
-      </Routes>
-    </BrowserRouter>
+    <Provider store={store}>
+      <BrowserRouter>
+        <Routes>
+          <Route path='/' element={<App />}>
+            <Route index={true} element={<HomeScreen />} />
+            <Route path='/product/:id' element={<ProductScreen />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
+    </Provider>
   </StrictMode>
 );
