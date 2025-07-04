@@ -1,20 +1,22 @@
 import { type FC } from 'react';
 import { Row, Col } from 'react-bootstrap';
 import { useGetProductsQuery } from '../slices/productsApiSlice';
-import { getErrorMessage } from '../utils/errorUtils';
 
-import { type Product as ProductType } from '../types';
 import Product from '../components/Product';
+import Loader from '../components/Loader';
+import Message from '../components/Message';
+import { getErrorMessage } from '../utils/errorUtils';
+import { type Product as ProductType } from '../types';
 
 const HomeScreen: FC = () => {
   const { data: products, isLoading, error } = useGetProductsQuery();
 
   if (isLoading) {
-    return <h2>Loading...</h2>;
+    return <Loader />;
   }
 
   if (error) {
-    return <div>{getErrorMessage(error)}</div>;
+    return <Message variant='danger'>{getErrorMessage(error)}</Message>;
   }
 
   if (products) {

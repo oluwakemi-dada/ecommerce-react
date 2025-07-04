@@ -1,9 +1,11 @@
 import { type FC } from 'react';
 import { Link, useParams } from 'react-router';
 import { Row, Col, Image, ListGroup, Card, Button } from 'react-bootstrap';
-
-import Rating from '../components/Rating';
 import { useGetProductDetailsQuery } from '../slices/productsApiSlice';
+
+import Loader from '../components/Loader';
+import Message from '../components/Message';
+import Rating from '../components/Rating';
 import { getErrorMessage } from '../utils/errorUtils';
 
 const ProductScreen: FC = () => {
@@ -20,9 +22,9 @@ const ProductScreen: FC = () => {
       <Link className='btn btn-light my-3' to='/'>
         Go Back
       </Link>
-      {isLoading && <h2>Loading...</h2>}
+      {isLoading && <Loader />}
 
-      {error && <div>{getErrorMessage(error)}</div>}
+      {error && <Message variant='danger'>{getErrorMessage(error)}</Message>}
 
       {product && (
         <Row>
