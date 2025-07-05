@@ -1,7 +1,7 @@
 import { type FC } from 'react';
 import { FaStar, FaRegStar, FaStarHalfAlt } from 'react-icons/fa';
 
-interface RatingProps {
+type RatingProps = {
   value: number;
   text?: string;
 }

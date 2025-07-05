@@ -1,7 +1,7 @@
 import { type FC } from 'react';
 import { Alert } from 'react-bootstrap';
 
-interface MessageProps {
+type  MessageProps = {
   variant?: 'success' | 'danger' | 'warning' | 'info';
   children: React.ReactNode;
 }

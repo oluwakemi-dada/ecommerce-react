@@ -1,22 +1,22 @@
-export interface Product {
+export type Product = {
   _id: string;
-  name: string;
-  image: string;
-  description: string;
   brand: string;
   category: string;
-  price: number;
   countInStock: number;
-  rating: number;
+  description: string;
+  image: string;
+  name: string;
   numReviews: number;
+  price: number;
+  rating: number;
   reviews: Review[];
-}
+};
 
-export interface Review {
+export type Review = {
   _id: string;
   user: string;
   name: string;
   rating: number;
   comment: string;
   createdAt: string;
-}
+};

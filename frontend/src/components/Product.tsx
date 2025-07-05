@@ -5,9 +5,9 @@ import { Link } from 'react-router';
 import Rating from './Rating';
 import { type Product as ProductType } from '../types';
 
-interface ProductProps {
+type ProductProps = {
   product: ProductType;
-}
+};
 
 const Product: FC<ProductProps> = ({ product }) => {
   return (
