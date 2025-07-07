@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { type PayloadAction } from '@reduxjs/toolkit';
-import { type CartState, type CartItem } from '../types/cart';
+import { type CartState, type CartItem } from '../types';
 import { updateCart } from '../utils/cartUtils';
 
 const cartData = localStorage.getItem('cart');
@@ -9,7 +9,7 @@ const initialState: CartState = cartData
   ? JSON.parse(cartData)
   : { cartItems: [] };
 
-const cartSlice = createSlice({
+const cartSlice = createSlice({ 
   name: 'cart',
   initialState,
   reducers: {

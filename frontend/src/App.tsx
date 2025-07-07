@@ -1,4 +1,4 @@
-import { type FC } from 'react';
+import type { FC } from 'react';
 import { Outlet } from 'react-router';
 import { Container } from 'react-bootstrap';
 
