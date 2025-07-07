@@ -9,3 +9,7 @@ export type UserLogin = {
   email: string;
   password: string;
 };
+
+export type UserLogout = {
+  message: string;
+};

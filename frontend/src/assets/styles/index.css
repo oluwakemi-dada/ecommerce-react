@@ -2,6 +2,10 @@ main {
   min-height: 80vh;
 }
 
+a {
+  text-decoration: none;
+}
+
 .rating span {
   margin: 0.1rem;
 }

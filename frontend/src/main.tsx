@@ -11,6 +11,7 @@ import App from './App.tsx';
 import HomeScreen from './screens/HomeScreen.tsx';
 import ProductScreen from './screens/ProductScreen.tsx';
 import CartScreen from './screens/CartScreen.tsx';
+import LoginScreen from './screens/LoginScreen.tsx';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
@@ -21,6 +22,7 @@ createRoot(document.getElementById('root')!).render(
             <Route index={true} element={<HomeScreen />} />
             <Route path='/product/:id' element={<ProductScreen />} />
             <Route path='/cart' element={<CartScreen />} />
+            <Route path='/login' element={<LoginScreen />} />
           </Route>
         </Routes>
       </BrowserRouter>
