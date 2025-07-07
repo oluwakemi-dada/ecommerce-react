@@ -10,6 +10,12 @@ export type UserLogin = {
   password: string;
 };
 
+export type UserRegister = {
+  name: string;
+  email: string;
+  password: string;
+};
+
 export type UserLogout = {
   message: string;
 };
