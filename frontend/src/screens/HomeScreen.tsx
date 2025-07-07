@@ -1,4 +1,4 @@
-import { type FC } from 'react';
+import type { FC } from 'react';
 import { Row, Col } from 'react-bootstrap';
 import { useGetProductsQuery } from '../slices/productsApiSlice';
 
@@ -6,7 +6,7 @@ import Product from '../components/Product';
 import Loader from '../components/Loader';
 import Message from '../components/Message';
 import { getErrorMessage } from '../utils/errorUtils';
-import { type Product as ProductType } from '../types';
+import type { Product as ProductType } from '../types';
 
 const HomeScreen: FC = () => {
   const { data: products, isLoading, error } = useGetProductsQuery();

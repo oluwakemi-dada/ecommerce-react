@@ -1,4 +1,4 @@
-import { type FetchBaseQueryError } from '@reduxjs/toolkit/query';
+import type { FetchBaseQueryError } from '@reduxjs/toolkit/query';
 
 // Type predicate to check if an error is a FetchBaseQueryError
 export const isFetchBaseQueryError = (

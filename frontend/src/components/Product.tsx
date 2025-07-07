@@ -1,9 +1,9 @@
-import { type FC } from 'react';
+import type { FC } from 'react';
 import { Card } from 'react-bootstrap';
 import { Link } from 'react-router';
 
 import Rating from './Rating';
-import { type Product as ProductType } from '../types';
+import type { Product as ProductType } from '../types';
 
 type ProductProps = {
   product: ProductType;

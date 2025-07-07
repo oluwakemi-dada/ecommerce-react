@@ -1,4 +1,4 @@
-import { type FC, useState } from 'react';
+import type { FC, useState } from 'react';
 import { Link, useParams, useNavigate } from 'react-router';
 import {
   Row,

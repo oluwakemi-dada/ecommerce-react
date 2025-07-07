@@ -1,10 +1,10 @@
-import { type FC } from 'react';
+import type { FC } from 'react';
 import { FaStar, FaRegStar, FaStarHalfAlt } from 'react-icons/fa';
 
 type RatingProps = {
   value: number;
   text?: string;
-}
+};
 
 const Rating: FC<RatingProps> = ({ value, text }) => {
   return (

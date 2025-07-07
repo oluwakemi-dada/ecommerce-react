@@ -1,4 +1,4 @@
-import { type FC } from 'react';
+import type { FC } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 
 const Footer: FC = () => {
