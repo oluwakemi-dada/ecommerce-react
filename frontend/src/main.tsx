@@ -28,7 +28,6 @@ createRoot(document.getElementById('root')!).render(
             <Route path='/login' element={<LoginScreen />} />
             <Route path='/register' element={<RegisterScreen />} />
 
-            {/* Private routes */}
             <Route path='' element={<PrivateRoute />}>
               <Route path='/shipping' element={<ShippingScreen />} />
             </Route>
