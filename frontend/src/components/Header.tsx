@@ -7,13 +7,13 @@ import { useLogoutMutation } from '../slices/userApiSlice';
 import { logout } from '../slices/authSlice';
 
 import logo from '../assets/logo.png';
-import type { RootState } from '../types/store';
+import type { AppDispatch, RootState } from '../types/store';
 
 const Header: FC = () => {
   const { cartItems } = useSelector((state: RootState) => state.cart);
   const { userInfo } = useSelector((state: RootState) => state.auth);
 
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate();
 
   const [logoutApiCall] = useLogoutMutation();

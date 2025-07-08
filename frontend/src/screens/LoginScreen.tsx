@@ -8,14 +8,14 @@ import Loader from '../components/Loader';
 import { toast } from 'react-toastify';
 
 import FormContainer from '../components/FormContainer';
-import type { RootState } from '../types';
+import type { AppDispatch, RootState } from '../types';
 import { getErrorMessage } from '../utils/errorUtils';
 
 const LoginScreen: FC = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate();
 
   const [loginApiCall, { isLoading }] = useLoginMutation();

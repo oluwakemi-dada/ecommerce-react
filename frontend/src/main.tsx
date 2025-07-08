@@ -13,6 +13,7 @@ import ProductScreen from './screens/ProductScreen.tsx';
 import CartScreen from './screens/CartScreen.tsx';
 import LoginScreen from './screens/LoginScreen.tsx';
 import RegisterScreen from './screens/RegisterScreen.tsx';
+import ShippingScreen from './screens/ShippingScreen.tsx';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
@@ -25,6 +26,7 @@ createRoot(document.getElementById('root')!).render(
             <Route path='/cart' element={<CartScreen />} />
             <Route path='/login' element={<LoginScreen />} />
             <Route path='/register' element={<RegisterScreen />} />
+            <Route path='/shipping' element={<ShippingScreen />} />
           </Route>
         </Routes>
       </BrowserRouter>

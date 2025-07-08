@@ -8,7 +8,7 @@ import Loader from '../components/Loader';
 import { toast } from 'react-toastify';
 
 import FormContainer from '../components/FormContainer';
-import type { RootState } from '../types';
+import type { AppDispatch, RootState } from '../types';
 import { getErrorMessage } from '../utils/errorUtils';
 
 const RegisterScreen: FC = () => {
@@ -17,7 +17,7 @@ const RegisterScreen: FC = () => {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
 
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate();
 
   const [registerApiCall, { isLoading }] = useRegisterMutation();

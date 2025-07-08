@@ -17,11 +17,12 @@ import Message from '../components/Message';
 import Rating from '../components/Rating';
 import { getErrorMessage } from '../utils/errorUtils';
 import { addToCart } from '../slices/cartSlice';
+import type { AppDispatch } from '../types';
 
 const ProductScreen: FC = () => {
   const { id: productId } = useParams<{ id: string }>();
 
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate();
 
   const [qty, setQty] = useState(1);
