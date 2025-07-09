@@ -38,4 +38,22 @@ export type OrderResponse = {
   isDelivered: boolean;
   createdAt: string;
   updatedAt: string;
+  deliveredAt: string;
+  paidAt: string;
+};
+
+// Order details
+// export type PaymentResult = {
+//   id: string;
+//   status: string;
+//   update_time: string;
+//   email_address: string;
+// };
+
+export type OrderDetails = Omit<OrderResponse, 'user'> & {
+  user: {
+    _id: string;
+    name: string;
+    email: string;
+  };
 };
