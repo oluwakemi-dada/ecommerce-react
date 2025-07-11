@@ -2,10 +2,10 @@ import { type FC, useState } from 'react';
 import { Form, Button } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router';
-import { saveShippingAddress } from '../slices/cartSlice';
-import type { AppDispatch, RootState } from '../types';
-import FormContainer from '../components/FormContainer';
-import CheckoutSteps from '../components/CheckoutSteps';
+import { saveShippingAddress } from '../../slices/cartSlice';
+import type { AppDispatch, RootState } from '../../types';
+import FormContainer from '../../components/FormContainer';
+import CheckoutSteps from '../../components/CheckoutSteps';
 
 const ShippingScreen: FC = () => {
   const cart = useSelector((state: RootState) => state.cart);

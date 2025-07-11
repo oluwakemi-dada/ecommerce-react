@@ -4,13 +4,13 @@ import { Link } from 'react-router';
 import { useSelector, useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
 import { FaTimes } from 'react-icons/fa';
-import Message from '../components/Message';
-import Loader from '../components/Loader';
-import { useProfileMutation } from '../slices/userApiSlice';
-import { setCredentials } from '../slices/authSlice';
-import type { AppDispatch, RootState } from '../types';
-import { getErrorMessage } from '../utils/errorUtils';
-import { useGetMyOrdersQuery } from '../slices/ordersApiSlice';
+import Message from '../../components/Message';
+import Loader from '../../components/Loader';
+import { useProfileMutation } from '../../slices/userApiSlice';
+import { setCredentials } from '../../slices/authSlice';
+import type { AppDispatch, RootState } from '../../types';
+import { getErrorMessage } from '../../utils/errorUtils';
+import { useGetMyOrdersQuery } from '../../slices/ordersApiSlice';
 
 const ProfileScreen: FC = () => {
   const [name, setName] = useState('');

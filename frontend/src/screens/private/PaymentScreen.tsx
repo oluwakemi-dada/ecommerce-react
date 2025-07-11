@@ -2,10 +2,10 @@ import { type FC, useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router';
 import { Form, Button, Col } from 'react-bootstrap';
-import FormContainer from '../components/FormContainer';
-import CheckoutSteps from '../components/CheckoutSteps';
-import { savePaymentMethod } from '../slices/cartSlice';
-import type { AppDispatch, RootState } from '../types';
+import FormContainer from '../../components/FormContainer';
+import CheckoutSteps from '../../components/CheckoutSteps';
+import { savePaymentMethod } from '../../slices/cartSlice';
+import type { AppDispatch, RootState } from '../../types';
 
 type PaymentMethod = 'PayPal';
 

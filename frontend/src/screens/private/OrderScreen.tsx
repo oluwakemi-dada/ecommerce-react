@@ -27,13 +27,13 @@ import {
   useGetOrderDetailsQuery,
   usePayOrderMutation,
   useGetPayPalClientIdQuery,
-} from '../slices/ordersApiSlice';
+} from '../../slices/ordersApiSlice';
 import { useSelector } from 'react-redux';
-import Message from '../components/Message';
-import Loader from '../components/Loader';
-import { getErrorMessage } from '../utils/errorUtils';
+import Message from '../../components/Message';
+import Loader from '../../components/Loader';
+import { getErrorMessage } from '../../utils/errorUtils';
 
-import type { RootState } from '../types';
+import type { RootState } from '../../types';
 
 const OrderScreen: FC = () => {
   const { id: orderId } = useParams();

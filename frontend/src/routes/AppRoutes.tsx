@@ -9,11 +9,13 @@ import ProductScreen from '../screens/ProductScreen.tsx';
 import CartScreen from '../screens/CartScreen.tsx';
 import LoginScreen from '../screens/LoginScreen.tsx';
 import RegisterScreen from '../screens/RegisterScreen.tsx';
-import ShippingScreen from '../screens/ShippingScreen.tsx';
-import PaymentScreen from '../screens/PaymentScreen.tsx';
-import PlaceOrderScreen from '../screens/PlaceOrderScreen.tsx';
-import OrderScreen from '../screens/OrderScreen.tsx';
-import ProfileScreen from '../screens/ProfileScreen.tsx';
+import ShippingScreen from '../screens/private/ShippingScreen.tsx';
+import PaymentScreen from '../screens/private/PaymentScreen.tsx';
+import PlaceOrderScreen from '../screens/private/PlaceOrderScreen.tsx';
+import OrderScreen from '../screens/private/OrderScreen.tsx';
+import ProfileScreen from '../screens/private/ProfileScreen.tsx';
+import AdminRoute from '../components/AdminRoute.tsx';
+import OrderListScreen from '../screens/admin/OrderListScreen.tsx';
 
 const AppRoutes = () => {
   const { data } = useGetPayPalClientIdQuery();
@@ -39,6 +41,10 @@ const AppRoutes = () => {
                 <Route path='/placeorder' element={<PlaceOrderScreen />} />
                 <Route path='/order/:id' element={<OrderScreen />} />
                 <Route path='/profile' element={<ProfileScreen />} />
+              </Route>
+
+              <Route path='' element={<AdminRoute />}>
+                <Route path='/admin/orderlist' element={<OrderListScreen />} />
               </Route>
             </Route>
           </Routes>
