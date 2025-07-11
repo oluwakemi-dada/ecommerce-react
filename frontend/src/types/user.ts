@@ -19,3 +19,9 @@ export type UserRegister = {
 export type UserLogout = {
   message: string;
 };
+
+export type UpdateProfileRequest = UserRegister & {
+  _id: string;
+};
+
+export type UpdateProfileResponse = User;

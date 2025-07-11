@@ -5,8 +5,8 @@ import {
   Col,
   ListGroup,
   Image,
-  Form,
-  Button,
+  // Form,
+  // Button,
   Card,
 } from 'react-bootstrap';
 import { toast } from 'react-toastify';
@@ -15,10 +15,7 @@ import {
   usePayPalScriptReducer,
   SCRIPT_LOADING_STATE,
 } from '@paypal/react-paypal-js';
-import type {
-  // ReactPayPalScriptOptions,
-  ScriptReducerAction,
-} from '@paypal/react-paypal-js';
+import type { ScriptReducerAction } from '@paypal/react-paypal-js';
 import type {
   OnApproveData,
   OnApproveActions,
@@ -31,7 +28,7 @@ import {
   usePayOrderMutation,
   useGetPayPalClientIdQuery,
 } from '../slices/ordersApiSlice';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import Message from '../components/Message';
 import Loader from '../components/Loader';
 import { getErrorMessage } from '../utils/errorUtils';

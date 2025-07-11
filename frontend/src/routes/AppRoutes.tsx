@@ -13,10 +13,11 @@ import ShippingScreen from '../screens/ShippingScreen.tsx';
 import PaymentScreen from '../screens/PaymentScreen.tsx';
 import PlaceOrderScreen from '../screens/PlaceOrderScreen.tsx';
 import OrderScreen from '../screens/OrderScreen.tsx';
+import ProfileScreen from '../screens/ProfileScreen.tsx';
 
 const AppRoutes = () => {
   const { data } = useGetPayPalClientIdQuery();
-  
+
   if (data)
     return (
       <PayPalScriptProvider
@@ -26,7 +27,7 @@ const AppRoutes = () => {
         <BrowserRouter>
           <Routes>
             <Route path='/' element={<App />}>
-              <Route index={true} element={<HomeScreen />} />
+              <Route index element={<HomeScreen />} />
               <Route path='/product/:id' element={<ProductScreen />} />
               <Route path='/cart' element={<CartScreen />} />
               <Route path='/login' element={<LoginScreen />} />
@@ -37,6 +38,7 @@ const AppRoutes = () => {
                 <Route path='/payment' element={<PaymentScreen />} />
                 <Route path='/placeorder' element={<PlaceOrderScreen />} />
                 <Route path='/order/:id' element={<OrderScreen />} />
+                <Route path='/profile' element={<ProfileScreen />} />
               </Route>
             </Route>
           </Routes>

@@ -1,5 +1,4 @@
 import type { ShippingAddress } from './cart';
-import type { User } from './user';
 
 export type OrderItem = {
   name: string;
@@ -11,7 +10,7 @@ export type OrderItem = {
 export type OrderRequest = {
   orderItems: OrderItem[];
   shippingAddress: ShippingAddress;
-  paymentMethod: string;
+  paymentMethod: 'PayPal';
   itemsPrice: number;
   taxPrice: number;
   shippingPrice: number;
@@ -29,7 +28,7 @@ export type OrderResponse = {
   user: string;
   orderItems: DbOrderItem[];
   shippingAddress: ShippingAddress;
-  paymentMethod: string;
+  paymentMethod: 'PayPal';
   itemsPrice: number;
   taxPrice: number;
   shippingPrice: number;
@@ -38,16 +37,8 @@ export type OrderResponse = {
   isDelivered: boolean;
   createdAt: string;
   updatedAt: string;
-  deliveredAt: string;
-  paidAt: string;
-};
-
-// Order details
-export type PaymentResult = {
-  id: string;
-  status: string;
-  update_time: string;
-  email_address: string;
+  deliveredAt?: string;
+  paidAt?: string;
 };
 
 export type OrderDetails = Omit<OrderResponse, 'user'> & {
@@ -59,5 +50,11 @@ export type OrderDetails = Omit<OrderResponse, 'user'> & {
 };
 
 // Payment response from paypal
-export type PaymentResponse = Omit<OrderResponse, 'deliveredAt'> &
-  PaymentResult;
+export type PaymentResponse = Omit<OrderResponse, 'deliveredAt'> & {
+  paymentResult: {
+    id: string;
+    status: string;
+    update_time: string;
+    email_address: string;
+  };
+};

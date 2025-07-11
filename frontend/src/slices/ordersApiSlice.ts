@@ -1,6 +1,11 @@
 import { apiSlice } from './apiSlice';
 import { ORDERS_URL, PAYPAL_URL } from '../constants';
-import type { OrderDetails, OrderRequest, OrderResponse, PaymentResponse } from '../types';
+import type {
+  OrderDetails,
+  OrderRequest,
+  OrderResponse,
+  PaymentResponse,
+} from '../types';
 import type { OrderResponseBody } from '@paypal/paypal-js';
 
 type OrderId = string;
@@ -44,6 +49,12 @@ export const ordersApiSlice = apiSlice.injectEndpoints({
         keepUnusedDataFor: 5,
       }),
     }),
+    getMyOrders: builder.query<OrderResponse[], void>({
+      query: () => ({
+        url: `${ORDERS_URL}/mine`,
+      }),
+      keepUnusedDataFor: 5,
+    }),
   }),
 });
 
@@ -52,4 +63,5 @@ export const {
   useGetOrderDetailsQuery,
   usePayOrderMutation,
   useGetPayPalClientIdQuery,
+  useGetMyOrdersQuery,
 } = ordersApiSlice;

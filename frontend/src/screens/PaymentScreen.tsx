@@ -7,8 +7,10 @@ import CheckoutSteps from '../components/CheckoutSteps';
 import { savePaymentMethod } from '../slices/cartSlice';
 import type { AppDispatch, RootState } from '../types';
 
+type PaymentMethod = 'PayPal';
+
 const PaymentScreen: FC = () => {
-  const [paymentMethod, setPaymentMethod] = useState('PayPal');
+  const [paymentMethod, setPaymentMethod] = useState<PaymentMethod>('PayPal');
 
   const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate();
@@ -45,7 +47,9 @@ const PaymentScreen: FC = () => {
               name='paymentMethod'
               value='PayPal'
               checked
-              onChange={(e) => setPaymentMethod(e.target.value)}
+              onChange={(e) =>
+                setPaymentMethod(e.target.value as PaymentMethod)
+              }
             ></Form.Check>
           </Col>
         </Form.Group>

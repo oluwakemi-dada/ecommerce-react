@@ -134,7 +134,7 @@ const PlaceOrderScreen: FC = () => {
 
               {error && (
                 <ListGroup.Item>
-                  <Message>{getErrorMessage(error)}</Message>
+                  <Message variant='danger'>{getErrorMessage(error)}</Message>
                 </ListGroup.Item>
               )}
 
