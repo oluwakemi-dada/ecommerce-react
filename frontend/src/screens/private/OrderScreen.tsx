@@ -228,7 +228,7 @@ const OrderScreen: FC = () => {
                 </Row>
               </ListGroup.Item>
 
-              {!order?.isPaid && (
+              {!userInfo?.isAdmin && !order?.isPaid && (
                 <ListGroup.Item>
                   {loadingPay && <Loader />}
 

@@ -17,6 +17,15 @@ export type OrderRequest = {
   totalPrice: number;
 };
 
+export type PaymentResult = {
+  paymentResult: {
+    id: string;
+    status: string;
+    update_time: string;
+    email_address: string;
+  };
+};
+
 // Db - database
 export type DbOrderItem = OrderItem & {
   product: string;
@@ -49,12 +58,14 @@ export type OrderDetails = Omit<OrderResponse, 'user'> & {
   };
 };
 
-// Payment response from paypal
-export type PaymentResponse = Omit<OrderResponse, 'deliveredAt'> & {
-  paymentResult: {
-    id: string;
-    status: string;
-    update_time: string;
-    email_address: string;
+export type AllOrdersResponse = Omit<OrderResponse, 'user'> &
+  PaymentResult & {
+    user: {
+      _id: string;
+      name: string;
+    };
   };
-};
+
+// Payment response from paypal
+export type PaymentResponse = Omit<OrderResponse, 'deliveredAt'> &
+  PaymentResult;
