@@ -43,12 +43,12 @@ export type OrderResponse = {
 };
 
 // Order details
-// export type PaymentResult = {
-//   id: string;
-//   status: string;
-//   update_time: string;
-//   email_address: string;
-// };
+export type PaymentResult = {
+  id: string;
+  status: string;
+  update_time: string;
+  email_address: string;
+};
 
 export type OrderDetails = Omit<OrderResponse, 'user'> & {
   user: {
@@ -57,3 +57,7 @@ export type OrderDetails = Omit<OrderResponse, 'user'> & {
     email: string;
   };
 };
+
+// Payment response from paypal
+export type PaymentResponse = Omit<OrderResponse, 'deliveredAt'> &
+  PaymentResult;
