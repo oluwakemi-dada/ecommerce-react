@@ -10,10 +10,8 @@ export type UserLogin = {
   password: string;
 };
 
-export type UserRegister = {
+export type UserRegister = UserLogin & {
   name: string;
-  email: string;
-  password: string;
 };
 
 export type UserLogout = {

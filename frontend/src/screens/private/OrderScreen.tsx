@@ -1,6 +1,6 @@
 import { type FC, useEffect } from 'react';
-import { Link, useParams } from 'react-router';
-import { Row, Col, ListGroup, Image, Card, Button } from 'react-bootstrap';
+import { useParams } from 'react-router';
+import { Row, Col, ListGroup, Card, Button } from 'react-bootstrap';
 import { toast } from 'react-toastify';
 import {
   PayPalButtons,
@@ -26,6 +26,7 @@ import Loader from '../../components/Loader';
 import { getErrorMessage } from '../../utils/errorUtils';
 
 import type { RootState } from '../../types';
+import OrderItem from '../../components/OrderItem';
 
 const OrderScreen: FC = () => {
   const { id: orderId } = useParams();
@@ -187,19 +188,7 @@ const OrderScreen: FC = () => {
             <ListGroup.Item>
               <h2>Order Items</h2>
               {order?.orderItems.map((item, index) => (
-                <ListGroup.Item key={index}>
-                  <Row>
-                    <Col md={1}>
-                      <Image src={item.image} alt={item.name} fluid rounded />
-                    </Col>
-                    <Col>
-                      <Link to={`/product/${item.product}`}>{item.name}</Link>
-                    </Col>
-                    <Col md={4}>
-                      {item.qty} x ${item.price} = ${item.qty * item.price}
-                    </Col>
-                  </Row>
-                </ListGroup.Item>
+                <OrderItem key={index} item={item} />
               ))}
             </ListGroup.Item>
           </ListGroup>

@@ -1,7 +1,7 @@
 import { type FC, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router';
+import { useNavigate } from 'react-router';
 import { useSelector, useDispatch } from 'react-redux';
-import { Button, Row, Col, ListGroup, Image, Card } from 'react-bootstrap';
+import { Button, Row, Col, ListGroup, Card } from 'react-bootstrap';
 import { toast } from 'react-toastify';
 import CheckoutSteps from '../../components/CheckoutSteps';
 import type { AppDispatch, RootState } from '../../types';
@@ -10,6 +10,7 @@ import Loader from '../../components/Loader';
 import { useCreateOrderMutation } from '../../slices/ordersApiSlice';
 import { clearCartItems } from '../../slices/cartSlice';
 import { getErrorMessage } from '../../utils/errorUtils';
+import PlaceOrderCartItem from '../../components/PlaceOrderCartItem';
 
 const PlaceOrderScreen: FC = () => {
   const navigate = useNavigate();
@@ -73,24 +74,7 @@ const PlaceOrderScreen: FC = () => {
               ) : (
                 <ListGroup variant='flush'>
                   {cart.cartItems.map((item, index) => (
-                    <ListGroup.Item key={index}>
-                      <Row>
-                        <Col md={1}>
-                          <Image
-                            src={item.image}
-                            alt={item.name}
-                            fluid
-                            rounded
-                          />
-                        </Col>
-                        <Col>
-                          <Link to={`/product/${item._id}`}>{item.name}</Link>
-                        </Col>
-                        <Col md={4}>
-                          {item.qty} x {item.price} = ${item.qty * item.price}
-                        </Col>
-                      </Row>
-                    </ListGroup.Item>
+                    <PlaceOrderCartItem key={index} item={item} />
                   ))}
                 </ListGroup>
               )}

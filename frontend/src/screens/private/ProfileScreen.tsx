@@ -1,9 +1,7 @@
 import { type FC, useState, useEffect } from 'react';
 import { Table, Form, Button, Row, Col } from 'react-bootstrap';
-import { Link } from 'react-router';
 import { useSelector, useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
-import { FaTimes } from 'react-icons/fa';
 import Message from '../../components/Message';
 import Loader from '../../components/Loader';
 import { useProfileMutation } from '../../slices/userApiSlice';
@@ -11,6 +9,7 @@ import { setCredentials } from '../../slices/authSlice';
 import type { AppDispatch, RootState } from '../../types';
 import { getErrorMessage } from '../../utils/errorUtils';
 import { useGetMyOrdersQuery } from '../../slices/ordersApiSlice';
+import ProfileOrderItem from '../../components/ProfileOrderItem';
 
 const ProfileScreen: FC = () => {
   const [name, setName] = useState('');
@@ -126,32 +125,7 @@ const ProfileScreen: FC = () => {
             </thead>
             <tbody>
               {orders!.map((order) => (
-                <tr key={order._id}>
-                  <td>{order._id}</td>
-                  <td>{order.createdAt.substring(0, 10)}</td>
-                  <td>{order.totalPrice}</td>
-                  <td>
-                    {order.isPaid ? (
-                      order.paidAt?.substring(0, 10)
-                    ) : (
-                      <FaTimes style={{ color: 'red' }} />
-                    )}
-                  </td>
-                  <td>
-                    {order.isDelivered ? (
-                      order.deliveredAt?.substring(0, 10)
-                    ) : (
-                      <FaTimes style={{ color: 'red' }} />
-                    )}
-                  </td>
-                  <td>
-                    <Link to={`/order/${order._id}`}>
-                      <Button className='btn-sm' variant='light'>
-                        Details
-                      </Button>
-                    </Link>
-                  </td>
-                </tr>
+                <ProfileOrderItem order={order} key={order._id} />
               ))}
             </tbody>
           </Table>

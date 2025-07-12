@@ -32,16 +32,10 @@ export type DbOrderItem = OrderItem & {
   _id: undefined;
 };
 
-export type OrderResponse = {
+export type OrderResponse = Omit<OrderRequest, 'orderItems'> & {
   _id: string;
   user: string;
   orderItems: DbOrderItem[];
-  shippingAddress: ShippingAddress;
-  paymentMethod: 'PayPal';
-  itemsPrice: number;
-  taxPrice: number;
-  shippingPrice: number;
-  totalPrice: number;
   isPaid: boolean;
   isDelivered: boolean;
   createdAt: string;
