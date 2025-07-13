@@ -4,9 +4,9 @@ import { Link } from 'react-router';
 import { FaTimes } from 'react-icons/fa';
 import type { AllOrdersResponse } from '../types';
 
-type OrderListItemProps = { order: AllOrdersResponse };
+type OrderListRowProps = { order: AllOrdersResponse };
 
-const OrderListItem: FC<OrderListItemProps> = ({ order }) => {
+const OrderListRow: FC<OrderListRowProps> = ({ order }) => {
   return (
     <tr>
       <td>{order._id}</td>
@@ -38,4 +38,4 @@ const OrderListItem: FC<OrderListItemProps> = ({ order }) => {
   );
 };
 
-export default OrderListItem;
+export default OrderListRow;

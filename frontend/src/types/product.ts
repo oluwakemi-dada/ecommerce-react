@@ -6,10 +6,10 @@ export type Product = {
   description: string;
   image: string;
   name: string;
-  numReviews: number;
   price: number;
-  rating: number;
-  reviews: Review[];
+  numReviews?: number;
+  rating?: number;
+  reviews?: Review[];
 };
 
 export type Review = {

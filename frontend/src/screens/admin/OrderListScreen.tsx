@@ -1,10 +1,10 @@
-import { type FC } from 'react';
+import type { FC } from 'react';
 import { Table } from 'react-bootstrap';
 import Message from '../../components/Message';
 import Loader from '../../components/Loader';
 import { useGetOrdersQuery } from '../../slices/ordersApiSlice';
 import { getErrorMessage } from '../../utils/errorUtils';
-import OrderListItem from '../../components/OrderListItem';
+import OrderListRow from '../../components/OrderListRow';
 
 const OrderListScreen: FC = () => {
   const { data: orders, isLoading, error } = useGetOrdersQuery();
@@ -31,7 +31,7 @@ const OrderListScreen: FC = () => {
           </thead>
           <tbody>
             {orders?.map((order) => (
-              <OrderListItem order={order} key={order._id} />
+              <OrderListRow order={order} key={order._id} />
             ))}
           </tbody>
         </Table>
