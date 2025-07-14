@@ -14,7 +14,7 @@ import ProductListRow from '../../components/ProductListRow';
 import { toast } from 'react-toastify';
 
 const ProductListScreen: FC = () => {
-  const { data: products, isLoading, error, refetch } = useGetProductsQuery();
+  const { data: products, isLoading, error } = useGetProductsQuery();
 
   const [createProduct, { isLoading: loadingCreate }] =
     useCreateProductMutation();
@@ -27,7 +27,6 @@ const ProductListScreen: FC = () => {
       try {
         await deleteProduct(id);
         toast.success('Product deleted');
-        refetch();
       } catch (error) {
         toast.error(getErrorMessage(error));
       }
@@ -38,7 +37,6 @@ const ProductListScreen: FC = () => {
     if (window.confirm('Are you sure you want to create a new product?')) {
       try {
         await createProduct();
-        refetch();
       } catch (error) {
         toast.error(getErrorMessage(error));
       }

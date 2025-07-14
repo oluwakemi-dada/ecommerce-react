@@ -26,7 +26,6 @@ const ProductEditScreen: FC = () => {
   const {
     data: product,
     isLoading,
-    refetch,
     error,
   } = useGetProductDetailsQuery(productId!);
 

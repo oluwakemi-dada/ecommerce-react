@@ -28,11 +28,13 @@ export const ordersApiSlice = apiSlice.injectEndpoints({
         method: 'POST',
         body: { ...order },
       }),
+      invalidatesTags: ['Orders', 'MyOrders'],
     }),
     getOrderDetails: builder.query<OrderDetails, OrderId>({
       query: (orderId) => ({
         url: `${ORDERS_URL}/${orderId}`,
       }),
+      providesTags: (result, error, id) => [{ type: 'Order', id }],
       keepUnusedDataFor: 5, // 5secs
     }),
     payOrder: builder.mutation<PaymentResponse, PayOrderRequest>({
@@ -43,6 +45,9 @@ export const ordersApiSlice = apiSlice.injectEndpoints({
           ...details,
         },
       }),
+      invalidatesTags: (result, error, { orderId }) => [
+        { type: 'Order', id: orderId },
+      ],
     }),
     getPayPalClientId: builder.query<PayPalClientId, void>({
       query: () => ({
@@ -54,12 +59,14 @@ export const ordersApiSlice = apiSlice.injectEndpoints({
       query: () => ({
         url: `${ORDERS_URL}/mine`,
       }),
+      providesTags: ['MyOrders'],
       keepUnusedDataFor: 5,
     }),
     getOrders: builder.query<AllOrdersResponse[], void>({
       query: () => ({
         url: ORDERS_URL,
       }),
+      providesTags: ['Orders'],
       keepUnusedDataFor: 5,
     }),
     deliverOrder: builder.mutation<OrderResponse, OrderId>({
@@ -67,6 +74,9 @@ export const ordersApiSlice = apiSlice.injectEndpoints({
         url: `${ORDERS_URL}/${orderId}/deliver`,
         method: 'PUT',
       }),
+      invalidatesTags: (result, error, orderId) => [
+        { type: 'Order', id: orderId },
+      ],
     }),
   }),
 });

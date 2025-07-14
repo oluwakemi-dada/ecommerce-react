@@ -31,12 +31,7 @@ import OrderItem from '../../components/OrderItem';
 const OrderScreen: FC = () => {
   const { id: orderId } = useParams();
 
-  const {
-    data: order,
-    refetch,
-    isLoading,
-    error,
-  } = useGetOrderDetailsQuery(orderId!);
+  const { data: order, isLoading, error } = useGetOrderDetailsQuery(orderId!);
 
   const [payOrder, { isLoading: loadingPay }] = usePayOrderMutation();
 
@@ -91,7 +86,6 @@ const OrderScreen: FC = () => {
     return actions.order!.capture().then(async function (details) {
       try {
         await payOrder({ orderId: orderId!, details });
-        refetch();
         toast.success('Paymemt successful');
       } catch (error) {
         toast.error(getErrorMessage(error));
@@ -101,7 +95,6 @@ const OrderScreen: FC = () => {
 
   // const onApproveTest = async () => {
   //   await payOrder({ orderId: orderId!, details: { payer: {} } });
-  //   refetch();
   //   toast.success('Paymemt successful');
   // };
 
@@ -131,7 +124,6 @@ const OrderScreen: FC = () => {
   const deliverOrderHandler = async () => {
     try {
       await deliverOrder(orderId!);
-      refetch();
       toast.success('Order delivered');
     } catch (error) {
       toast.error(getErrorMessage(error));
