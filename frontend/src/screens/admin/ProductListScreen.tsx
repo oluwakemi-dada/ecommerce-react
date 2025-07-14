@@ -12,9 +12,15 @@ import { getErrorMessage } from '../../utils/errorUtils';
 
 import ProductListRow from '../../components/ProductListRow';
 import { toast } from 'react-toastify';
+import { useParams } from 'react-router';
+import Paginate from '../../components/Paginate';
 
 const ProductListScreen: FC = () => {
-  const { data: products, isLoading, error } = useGetProductsQuery();
+  const { pageNumber } = useParams();
+
+  const { data, isLoading, error } = useGetProductsQuery({
+    pageNumber: pageNumber ?? '1',
+  });
 
   const [createProduct, { isLoading: loadingCreate }] =
     useCreateProductMutation();
@@ -76,7 +82,7 @@ const ProductListScreen: FC = () => {
               </tr>
             </thead>
             <tbody>
-              {products?.map((product) => (
+              {data?.products?.map((product) => (
                 <ProductListRow
                   product={product}
                   key={product._id}
@@ -85,6 +91,11 @@ const ProductListScreen: FC = () => {
               ))}
             </tbody>
           </Table>
+          <Paginate
+            pages={data?.pages ?? 1}
+            page={data?.page ?? 1}
+            isAdmin={true}
+          />
         </>
       )}
     </>

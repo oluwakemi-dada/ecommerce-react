@@ -34,6 +34,7 @@ const AppRoutes = () => {
           <Routes>
             <Route path='/' element={<App />}>
               <Route index element={<HomeScreen />} />
+              <Route path='/page/:pageNumber' element={<HomeScreen />} />
               <Route path='/product/:id' element={<ProductScreen />} />
               <Route path='/cart' element={<CartScreen />} />
               <Route path='/login' element={<LoginScreen />} />
@@ -51,6 +52,10 @@ const AppRoutes = () => {
                 <Route path='/admin/orderlist' element={<OrderListScreen />} />
                 <Route
                   path='/admin/productlist'
+                  element={<ProductListScreen />}
+                />
+                <Route
+                  path='/admin/productlist/page/:pageNumber'
                   element={<ProductListScreen />}
                 />
                 <Route

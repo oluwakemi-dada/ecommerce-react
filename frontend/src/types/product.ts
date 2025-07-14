@@ -21,6 +21,12 @@ export type Review = {
   createdAt: string;
 };
 
+export type GetProductsResponse = {
+  page: number;
+  pages: number;
+  products: Product[];
+};
+
 export type UploadProductImageResponse = {
   message: string;
   image: string;

@@ -6,15 +6,22 @@ import type {
   DeleteProductResponse,
   CreateReviewResponse,
   CreateReviewRequest,
+  GetProductsResponse,
 } from '../types';
 
 type ProductId = string;
+type PageNumber = {
+  pageNumber: string;
+};
 
 export const productsApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
-    getProducts: builder.query<Product[], void>({
-      query: () => ({
+    getProducts: builder.query<GetProductsResponse, PageNumber>({
+      query: ({ pageNumber }) => ({
         url: PRODUCTS_URL,
+        params: {
+          pageNumber,
+        },
       }),
       providesTags: ['Products'],
       keepUnusedDataFor: 5,
