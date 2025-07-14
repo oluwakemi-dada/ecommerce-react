@@ -4,6 +4,8 @@ import type {
   Product,
   UploadProductImageResponse,
   DeleteProductResponse,
+  CreateReviewResponse,
+  CreateReviewRequest,
 } from '../types';
 
 type ProductId = string;
@@ -56,6 +58,17 @@ export const productsApiSlice = apiSlice.injectEndpoints({
         { type: 'Product', id: productId },
       ],
     }),
+    createReview: builder.mutation<CreateReviewResponse, CreateReviewRequest>({
+      query: (data) => ({
+        url: `${PRODUCTS_URL}/${data.productId}/reviews`,
+        method: 'POST',
+        body: data,
+      }),
+      invalidatesTags: (result, error, data) => [
+        'Products',
+        { type: 'Product', id: data.productId },
+      ],
+    }),
   }),
 });
 
@@ -66,4 +79,5 @@ export const {
   useUpdateProductMutation,
   useUploadProductImageMutation,
   useDeleteProductMutation,
+  useCreateReviewMutation,
 } = productsApiSlice;

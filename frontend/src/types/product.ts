@@ -29,3 +29,13 @@ export type UploadProductImageResponse = {
 export type DeleteProductResponse = {
   message: string;
 };
+
+export type CreateReviewRequest = {
+  productId: string;
+  rating: number;
+  comment: string;
+};
+
+export type CreateReviewResponse = {
+  message: string;
+};

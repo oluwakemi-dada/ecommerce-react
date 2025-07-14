@@ -48,6 +48,8 @@ const OrderScreen: FC = () => {
 
   const { userInfo } = useSelector((state: RootState) => state.auth);
 
+  console.log(userInfo);
+
   useEffect(() => {
     if (!errorPayPal && !loadingPayPal && paypal?.clientId) {
       const options = {
@@ -92,11 +94,6 @@ const OrderScreen: FC = () => {
       }
     });
   };
-
-  // const onApproveTest = async () => {
-  //   await payOrder({ orderId: orderId!, details: { payer: {} } });
-  //   toast.success('Paymemt successful');
-  // };
 
   const onError = (error: unknown) => {
     toast.error(getErrorMessage(error));
@@ -214,7 +211,7 @@ const OrderScreen: FC = () => {
                 </Row>
               </ListGroup.Item>
 
-              {!userInfo?.isAdmin && !order?.isPaid && (
+              {order?.user._id === userInfo?._id && !order?.isPaid && (
                 <ListGroup.Item>
                   {loadingPay && <Loader />}
 
@@ -222,12 +219,6 @@ const OrderScreen: FC = () => {
                     <Loader />
                   ) : (
                     <div>
-                      {/* <Button
-                        onClick={onApproveTest}
-                        style={{ marginBottom: '10px' }}
-                      >
-                        Test Pay Order
-                      </Button> */}
                       <div>
                         <PayPalButtons
                           createOrder={createOrder}
