@@ -19,6 +19,7 @@ import OrderListScreen from '../screens/admin/OrderListScreen.tsx';
 import ProductListScreen from '../screens/admin/ProductListScreen.tsx';
 import ProductEditScreen from '../screens/admin/ProductEditScreen.tsx';
 import UserListScreen from '../screens/admin/UserListScreen.tsx';
+import UserEditScreen from '../screens/admin/UserEditScreen.tsx';
 
 const AppRoutes = () => {
   const { data } = useGetPayPalClientIdQuery();
@@ -57,6 +58,10 @@ const AppRoutes = () => {
                   element={<ProductEditScreen />}
                 />
                 <Route path='/admin/userlist' element={<UserListScreen />} />
+                <Route
+                  path='/admin/user/:id/edit'
+                  element={<UserEditScreen />}
+                />
               </Route>
             </Route>
           </Routes>

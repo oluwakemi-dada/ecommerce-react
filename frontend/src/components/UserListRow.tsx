@@ -35,7 +35,7 @@ const UserListRow: FC<UserListRowProps> = ({ user, deleteHandler }) => {
 
       <td>
         <Link
-          to={`admin/user/${user._id}/edit`}
+          to={`/admin/user/${user._id}/edit`}
           aria-label={`Edit user ${user.name}`}
         >
           <Button variant='light' className='btn-sm'>

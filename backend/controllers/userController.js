@@ -148,7 +148,7 @@ const getUserByID = asyncHandler(async (req, res) => {
 // @route   DELETE /api/users/:id
 // @access  Private / Admin
 const deleteUser = asyncHandler(async (req, res) => {
-  const user = User.findById(req.params.id);
+  const user = await User.findById(req.params.id);
 
   if (user) {
     if (user.isAdmin) {
@@ -172,7 +172,7 @@ const deleteUser = asyncHandler(async (req, res) => {
 // @route   PUT /api/users/:id
 // @access  Private / Admin
 const updateUser = asyncHandler(async (req, res) => {
-  const user = User.findById(req.params.id);
+  const user = await User.findById(req.params.id);
 
   if (user) {
     user.name = req.body.name || user.name;

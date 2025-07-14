@@ -8,6 +8,12 @@ import type {
   UserRegister,
 } from '../types';
 
+type UserId = string;
+
+type DeleteUser = {
+  message: string;
+};
+
 export const usersApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
     login: builder.mutation<User, UserLogin>({
@@ -45,6 +51,31 @@ export const usersApiSlice = apiSlice.injectEndpoints({
       providesTags: ['Users'],
       keepUnusedDataFor: 5,
     }),
+    deleteUser: builder.mutation<DeleteUser, UserId>({
+      query: (userId) => ({
+        url: `${USERS_URL}/${userId}`,
+        method: 'DELETE',
+      }),
+      invalidatesTags: ['Users'],
+    }),
+    getUserDetails: builder.query<User, UserId>({
+      query: (userId) => ({
+        url: `${USERS_URL}/${userId}`,
+      }),
+      providesTags: (result, error, userId) => [{ type: 'User', id: userId }],
+      keepUnusedDataFor: 5,
+    }),
+    updateUser: builder.mutation<User, User>({
+      query: (data) => ({
+        url: `${USERS_URL}/${data._id}`,
+        method: 'PUT',
+        body: data,
+      }),
+      invalidatesTags: (result, error, user) => [
+        'Users',
+        { type: 'User', id: user._id },
+      ],
+    }),
   }),
 });
 
@@ -54,4 +85,7 @@ export const {
   useLogoutMutation,
   useProfileMutation,
   useGetUsersQuery,
+  useDeleteUserMutation,
+  useGetUserDetailsQuery,
+  useUpdateUserMutation,
 } = usersApiSlice;
