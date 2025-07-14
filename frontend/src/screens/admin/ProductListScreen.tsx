@@ -6,6 +6,7 @@ import Loader from '../../components/Loader';
 import {
   useCreateProductMutation,
   useGetProductsQuery,
+  useDeleteProductMutation,
 } from '../../slices/productsApiSlice';
 import { getErrorMessage } from '../../utils/errorUtils';
 
@@ -17,6 +18,21 @@ const ProductListScreen: FC = () => {
 
   const [createProduct, { isLoading: loadingCreate }] =
     useCreateProductMutation();
+
+  const [deleteProduct, { isLoading: loadingDelete }] =
+    useDeleteProductMutation();
+
+  const deleteHandler = async (id: string) => {
+    if (window.confirm('Are you sure?')) {
+      try {
+        await deleteProduct(id);
+        toast.success('Product deleted');
+        refetch();
+      } catch (error) {
+        toast.error(getErrorMessage(error));
+      }
+    }
+  };
 
   const createProductHandler = async () => {
     if (window.confirm('Are you sure you want to create a new product?')) {
@@ -43,6 +59,7 @@ const ProductListScreen: FC = () => {
       </Row>
 
       {loadingCreate && <Loader />}
+      {loadingDelete && <Loader />}
       {isLoading ? (
         <Loader />
       ) : error ? (
@@ -62,7 +79,11 @@ const ProductListScreen: FC = () => {
             </thead>
             <tbody>
               {products?.map((product) => (
-                <ProductListRow product={product} key={product._id} />
+                <ProductListRow
+                  product={product}
+                  key={product._id}
+                  onDelete={deleteHandler}
+                />
               ))}
             </tbody>
           </Table>

@@ -6,13 +6,13 @@ import { Button } from 'react-bootstrap';
 
 type ProductListRowProps = {
   product: Product;
+  onDelete: (id: string) => void;
 };
 
-const ProductListRow: FC<ProductListRowProps> = ({ product }) => {
-  const deleteHandler = (id: string) => {
-    console.log('delete', id);
-  };
-
+const ProductListRow: FC<ProductListRowProps> = ({
+  product,
+  onDelete,
+}) => {
   return (
     <tr>
       <td>{product._id}</td>
@@ -29,7 +29,7 @@ const ProductListRow: FC<ProductListRowProps> = ({ product }) => {
         <Button
           variant='danger'
           className='btn-sm'
-          onClick={() => deleteHandler(product._id)}
+          onClick={() => onDelete(product._id)}
         >
           <FaTrash style={{ color: 'white' }} />
         </Button>

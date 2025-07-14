@@ -20,3 +20,12 @@ export type Review = {
   comment: string;
   createdAt: string;
 };
+
+export type UploadProductImageResponse = {
+  message: string;
+  image: string;
+};
+
+export type DeleteProductResponse = {
+  message: string;
+};
