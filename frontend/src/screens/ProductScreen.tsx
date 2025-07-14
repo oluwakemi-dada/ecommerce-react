@@ -18,6 +18,7 @@ import Rating from '../components/Rating';
 import { getErrorMessage } from '../utils/errorUtils';
 import { addToCart } from '../slices/cartSlice';
 import type { AppDispatch } from '../types';
+import { getFullImageUrl } from '../utils/imageUtils';
 
 const ProductScreen: FC = () => {
   const { id: productId } = useParams<{ id: string }>();
@@ -52,7 +53,11 @@ const ProductScreen: FC = () => {
       {product && (
         <Row>
           <Col md={5}>
-            <Image src={product?.image} alt={product?.name} fluid />
+            <Image
+              src={getFullImageUrl(product?.image)}
+              alt={product?.name}
+              fluid
+            />
           </Col>
 
           <Col md={4}>

@@ -8,6 +8,7 @@ import { toast } from 'react-toastify';
 import {
   useUpdateProductMutation,
   useGetProductDetailsQuery,
+  useUploadProductImageMutation,
 } from '../../slices/productsApiSlice';
 import { getErrorMessage } from '../../utils/errorUtils';
 
@@ -31,6 +32,9 @@ const ProductEditScreen: FC = () => {
 
   const [updateProduct, { isLoading: loadingUpdate }] =
     useUpdateProductMutation();
+
+  const [uploadProductImage, { isLoading: loadingUpload }] =
+    useUploadProductImageMutation();
 
   const navigate = useNavigate();
 
@@ -65,6 +69,22 @@ const ProductEditScreen: FC = () => {
 
       toast.success('Product updated');
       navigate('/admin/productlist');
+    } catch (error) {
+      toast.error(getErrorMessage(error));
+    }
+  };
+
+  const uploadFileHandler = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files![0];
+    const formData = new FormData();
+    formData.append('image', file);
+
+    try {
+      const res = await uploadProductImage(formData).unwrap();
+      console.log(res);
+
+      toast.success(res.message);
+      setImage(res.image);
     } catch (error) {
       toast.error(getErrorMessage(error));
     }
@@ -105,7 +125,21 @@ const ProductEditScreen: FC = () => {
               ></Form.Control>
             </Form.Group>
 
-            {/* Image input placeholder */}
+            <Form.Group controlId='image'>
+              <Form.Label>Image</Form.Label>
+              <Form.Control
+                type='text'
+                placeholder='Enter image url'
+                value={image}
+                onChange={(e) => setImage(e.target.value)}
+              ></Form.Control>
+              <Form.Control
+                placeholder='Choose File'
+                onChange={uploadFileHandler}
+                type='file'
+              ></Form.Control>
+              {loadingUpload && <Loader />}
+            </Form.Group>
 
             <Form.Group controlId='brand' className='my-2'>
               <Form.Label>Brand</Form.Label>

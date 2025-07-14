@@ -2,6 +2,7 @@ import type { FC } from 'react';
 import { Link } from 'react-router';
 import { Row, Col, ListGroup, Image } from 'react-bootstrap';
 import type { CartItem } from '../types';
+import { getFullImageUrl } from '../utils/imageUtils';
 
 type PlaceOrderCartItemProps = {
   item: CartItem;
@@ -12,7 +13,7 @@ const PlaceOrderCartItem: FC<PlaceOrderCartItemProps> = ({ item }) => {
     <ListGroup.Item>
       <Row>
         <Col md={1}>
-          <Image src={item.image} alt={item.name} fluid rounded />
+          <Image src={getFullImageUrl(item.image)} alt={item.name} fluid rounded />
         </Col>
         <Col>
           <Link to={`/product/${item._id}`}>{item.name}</Link>
