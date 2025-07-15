@@ -38,6 +38,7 @@ const PlaceOrderScreen: FC = () => {
         shippingPrice: cart.shippingPrice,
         totalPrice: cart.totalPrice,
       }).unwrap();
+
       dispatch(clearCartItems());
       navigate(`/order/${res._id}`);
     } catch (error) {

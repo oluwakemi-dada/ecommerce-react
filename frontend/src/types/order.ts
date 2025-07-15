@@ -1,20 +1,13 @@
-import type { ShippingAddress } from './cart';
+import type { OrderResponseBody } from '@paypal/paypal-js';
+import type { CartItem, ShippingAddress } from './cart';
 
 export type OrderItem = {
-  name: string;
-  qty: number;
+  _id: string;
   image: string;
+  name: string;
   price: number;
-};
-
-export type OrderRequest = {
-  orderItems: OrderItem[];
-  shippingAddress: ShippingAddress;
-  paymentMethod: 'PayPal';
-  itemsPrice: number;
-  taxPrice: number;
-  shippingPrice: number;
-  totalPrice: number;
+  product: string;
+  qty: number;
 };
 
 export type PaymentResult = {
@@ -26,25 +19,29 @@ export type PaymentResult = {
   };
 };
 
-// Db - database
-export type DbOrderItem = OrderItem & {
-  product: string;
-  _id: undefined;
+export type CreateOrderRequest = {
+  orderItems: CartItem[];
+  shippingAddress: ShippingAddress;
+  paymentMethod: 'PayPal';
+  itemsPrice: number;
+  taxPrice: number;
+  shippingPrice: number;
+  totalPrice: number;
 };
 
-export type OrderResponse = Omit<OrderRequest, 'orderItems'> & {
+export type CreateOrderResponse = Omit<CreateOrderRequest, 'orderItems'> & {
   _id: string;
-  user: string;
-  orderItems: DbOrderItem[];
-  isPaid: boolean;
+  orderItems: OrderItem[];
   isDelivered: boolean;
   createdAt: string;
+  isPaid: boolean;
   updatedAt: string;
-  deliveredAt?: string;
-  paidAt?: string;
+  user: string;
 };
 
-export type OrderDetails = Omit<OrderResponse, 'user'> & {
+export type OrderDetails = Omit<CreateOrderResponse, 'user'> & {
+  deliveredAt?: string;
+  paidAt?: string;
   user: {
     _id: string;
     name: string;
@@ -52,14 +49,28 @@ export type OrderDetails = Omit<OrderResponse, 'user'> & {
   };
 };
 
-export type AllOrdersResponse = Omit<OrderResponse, 'user'> &
-  PaymentResult & {
-    user: {
-      _id: string;
-      name: string;
-    };
-  };
+export type PayOrderRequest = {
+  orderId: string;
+  details: OrderResponseBody;
+};
 
-// Payment response from paypal
-export type PaymentResponse = Omit<OrderResponse, 'deliveredAt'> &
-  PaymentResult;
+export type PayOrderResponse = CreateOrderResponse & {
+  paidAt: string;
+  paymentResult: PaymentResult;
+};
+
+export type MyOrder = Omit<OrderDetails, 'user'> & {
+  user: string;
+};
+
+export type MyOrdersResponse = {
+  page: string;
+  pages: string;
+  orders: MyOrder[];
+};
+
+export type AllOrdersResponse = {
+  page: string;
+  pages: string;
+  orders: OrderDetails[];
+};

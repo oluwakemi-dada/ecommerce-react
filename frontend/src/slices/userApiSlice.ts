@@ -1,11 +1,14 @@
 import { USERS_URL } from '../constants';
 import { apiSlice } from './apiSlice';
 import type {
+  AllUsersResponse,
+  PageNumber,
   UpdateProfileRequest,
   User,
   UserLogin,
   UserLogout,
   UserRegister,
+  UsersListItem,
 } from '../types';
 
 type UserId = string;
@@ -13,6 +16,7 @@ type UserId = string;
 type DeleteUser = {
   message: string;
 };
+
 
 export const usersApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
@@ -44,9 +48,12 @@ export const usersApiSlice = apiSlice.injectEndpoints({
         body: data,
       }),
     }),
-    getUsers: builder.query<User[], void>({
-      query: () => ({
+    getUsers: builder.query<AllUsersResponse, PageNumber>({
+      query: ({ pageNumber }) => ({
         url: USERS_URL,
+        params: {
+          pageNumber,
+        },
       }),
       providesTags: ['Users'],
       keepUnusedDataFor: 5,
@@ -58,14 +65,14 @@ export const usersApiSlice = apiSlice.injectEndpoints({
       }),
       invalidatesTags: ['Users'],
     }),
-    getUserDetails: builder.query<User, UserId>({
+    getUserDetails: builder.query<UsersListItem, UserId>({
       query: (userId) => ({
         url: `${USERS_URL}/${userId}`,
       }),
       providesTags: (result, error, userId) => [{ type: 'User', id: userId }],
       keepUnusedDataFor: 5,
     }),
-    updateUser: builder.mutation<User, User>({
+    updateUser: builder.mutation<UsersListItem, User>({
       query: (data) => ({
         url: `${USERS_URL}/${data._id}`,
         method: 'PUT',

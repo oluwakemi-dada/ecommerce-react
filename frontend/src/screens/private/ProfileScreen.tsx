@@ -10,8 +10,12 @@ import type { AppDispatch, RootState } from '../../types';
 import { getErrorMessage } from '../../utils/errorUtils';
 import { useGetMyOrdersQuery } from '../../slices/ordersApiSlice';
 import ProfileOrderItem from '../../components/ProfileOrderItem';
+import { useParams } from 'react-router';
+import Paginate from '../../components/Paginate';
 
 const ProfileScreen: FC = () => {
+  const { pageNumber } = useParams();
+
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -24,7 +28,9 @@ const ProfileScreen: FC = () => {
   const [updateProfile, { isLoading: loadingUpdateProfile }] =
     useProfileMutation();
 
-  const { data: orders, isLoading, error } = useGetMyOrdersQuery();
+  const { data, isLoading, error } = useGetMyOrdersQuery({
+    pageNumber: pageNumber ?? '1',
+  });
 
   useEffect(() => {
     if (userInfo) {
@@ -45,6 +51,8 @@ const ProfileScreen: FC = () => {
           email,
           password,
         }).unwrap();
+        console.log(res);
+        
         dispatch(setCredentials(res));
         toast.success('Profile updated successfully');
       } catch (error) {
@@ -112,23 +120,32 @@ const ProfileScreen: FC = () => {
         ) : error ? (
           <Message variant='danger'>{getErrorMessage(error)}</Message>
         ) : (
-          <Table striped hover responsive className='table-sm'>
-            <thead>
-              <tr>
-                <th>ID</th>
-                <th>DATE</th>
-                <th>TOTAL</th>
-                <th>PAID</th>
-                <th>DELIVERED</th>
-                <th></th>
-              </tr>
-            </thead>
-            <tbody>
-              {orders!.map((order) => (
-                <ProfileOrderItem order={order} key={order._id} />
-              ))}
-            </tbody>
-          </Table>
+          <>
+            {' '}
+            <Table striped hover responsive className='table-sm'>
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>DATE</th>
+                  <th>TOTAL</th>
+                  <th>PAID</th>
+                  <th>DELIVERED</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                {data?.orders!.map((order) => (
+                  <ProfileOrderItem order={order} key={order._id} />
+                ))}
+              </tbody>
+            </Table>
+            <Paginate
+              pages={Number(data?.pages ?? 1)}
+              page={Number(data?.page ?? 1)}
+              isAdmin={true}
+              basePath='profile'
+            />
+          </>
         )}
       </Col>
     </Row>

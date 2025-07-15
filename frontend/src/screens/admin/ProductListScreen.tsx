@@ -95,6 +95,7 @@ const ProductListScreen: FC = () => {
             pages={data?.pages ?? 1}
             page={data?.page ?? 1}
             isAdmin={true}
+            basePath='admin/productlist'
           />
         </>
       )}

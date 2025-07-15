@@ -3,11 +3,13 @@ import { ORDERS_URL, PAYPAL_URL } from '../constants';
 import type {
   AllOrdersResponse,
   OrderDetails,
-  OrderRequest,
-  OrderResponse,
-  PaymentResponse,
+  CreateOrderRequest,
+  CreateOrderResponse,
+  PageNumber,
+  PayOrderResponse,
+  PayOrderRequest,
+  MyOrdersResponse,
 } from '../types';
-import type { OrderResponseBody } from '@paypal/paypal-js';
 
 type OrderId = string;
 
@@ -15,14 +17,9 @@ type PayPalClientId = {
   clientId: string;
 };
 
-type PayOrderRequest = {
-  orderId: string;
-  details: OrderResponseBody;
-};
-
 export const ordersApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
-    createOrder: builder.mutation<OrderResponse, OrderRequest>({
+    createOrder: builder.mutation<CreateOrderResponse, CreateOrderRequest>({
       query: (order) => ({
         url: ORDERS_URL,
         method: 'POST',
@@ -37,7 +34,7 @@ export const ordersApiSlice = apiSlice.injectEndpoints({
       providesTags: (result, error, id) => [{ type: 'Order', id }],
       keepUnusedDataFor: 5, // 5secs
     }),
-    payOrder: builder.mutation<PaymentResponse, PayOrderRequest>({
+    payOrder: builder.mutation<PayOrderResponse, PayOrderRequest>({
       query: ({ orderId, details }) => ({
         url: `${ORDERS_URL}/${orderId}/pay`,
         method: 'PUT',
@@ -55,21 +52,27 @@ export const ordersApiSlice = apiSlice.injectEndpoints({
         keepUnusedDataFor: 5,
       }),
     }),
-    getMyOrders: builder.query<OrderResponse[], void>({
-      query: () => ({
+    getMyOrders: builder.query<MyOrdersResponse, PageNumber>({
+      query: ({ pageNumber }) => ({
         url: `${ORDERS_URL}/mine`,
+        params: {
+          pageNumber,
+        },
       }),
       providesTags: ['MyOrders'],
       keepUnusedDataFor: 5,
     }),
-    getOrders: builder.query<AllOrdersResponse[], void>({
-      query: () => ({
+    getOrders: builder.query<AllOrdersResponse, PageNumber>({
+      query: ({ pageNumber }) => ({
         url: ORDERS_URL,
+        params: {
+          pageNumber,
+        },
       }),
       providesTags: ['Orders'],
       keepUnusedDataFor: 5,
     }),
-    deliverOrder: builder.mutation<OrderResponse, OrderId>({
+    deliverOrder: builder.mutation<OrderDetails, OrderId>({
       query: (orderId) => ({
         url: `${ORDERS_URL}/${orderId}/deliver`,
         method: 'PUT',

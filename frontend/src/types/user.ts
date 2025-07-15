@@ -23,3 +23,14 @@ export type UpdateProfileRequest = UserRegister & {
 };
 
 export type UpdateProfileResponse = User;
+
+export type UsersListItem = User & {
+  createdAt: string;
+  updatedAt: string;
+};
+
+export type AllUsersResponse = {
+  page: string;
+  pages: string;
+  users: UsersListItem[];
+};

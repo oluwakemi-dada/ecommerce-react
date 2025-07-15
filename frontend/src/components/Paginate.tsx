@@ -6,9 +6,15 @@ type PagesProps = {
   pages: number;
   page: number;
   isAdmin?: boolean;
+  basePath?: string;
 };
 
-const Paginate: FC<PagesProps> = ({ pages, page, isAdmin = false }) => {
+const Paginate: FC<PagesProps> = ({
+  pages,
+  page,
+  isAdmin = false,
+  basePath = '',
+}) => {
   return (
     pages > 1 && (
       <Pagination>
@@ -16,7 +22,7 @@ const Paginate: FC<PagesProps> = ({ pages, page, isAdmin = false }) => {
           <Pagination.Item
             key={x + 1}
             as={Link}
-            to={!isAdmin ? `/page/${x + 1}` : `/admin/productlist/page/${x + 1}`}
+            to={isAdmin ? `/${basePath}/page/${x + 1}` : `/page/${x + 1}`}
             active={x + 1 === page}
           >
             {x + 1}

@@ -46,10 +46,18 @@ const AppRoutes = () => {
                 <Route path='/placeorder' element={<PlaceOrderScreen />} />
                 <Route path='/order/:id' element={<OrderScreen />} />
                 <Route path='/profile' element={<ProfileScreen />} />
+                <Route
+                  path='/profile/page/:pageNumber'
+                  element={<ProfileScreen />}
+                />
               </Route>
 
               <Route path='' element={<AdminRoute />}>
                 <Route path='/admin/orderlist' element={<OrderListScreen />} />
+                <Route
+                  path='/admin/orderlist/page/:pageNumber'
+                  element={<OrderListScreen />}
+                />
                 <Route
                   path='/admin/productlist'
                   element={<ProductListScreen />}
@@ -63,6 +71,10 @@ const AppRoutes = () => {
                   element={<ProductEditScreen />}
                 />
                 <Route path='/admin/userlist' element={<UserListScreen />} />
+                <Route
+                  path='/admin/userlist/page/:pageNumber'
+                  element={<UserListScreen />}
+                />
                 <Route
                   path='/admin/user/:id/edit'
                   element={<UserEditScreen />}

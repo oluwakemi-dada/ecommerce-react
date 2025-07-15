@@ -2,10 +2,10 @@ import type { FC } from 'react';
 import { Button } from 'react-bootstrap';
 import { Link } from 'react-router';
 import { FaTimes } from 'react-icons/fa';
-import type { OrderResponse } from '../types';
+import type { MyOrder } from '../types';
 
 type ProfileOrderItemProps = {
-  order: OrderResponse;
+  order: MyOrder;
 };
 
 const ProfileOrderItem: FC<ProfileOrderItemProps> = ({ order }) => {

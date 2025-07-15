@@ -4,6 +4,10 @@ export type CartItem = Product & {
   qty: number;
 };
 
+export type AddCart = Product & {
+  qty: number;
+};
+
 export type ShippingAddress = {
   address?: string;
   city?: string;

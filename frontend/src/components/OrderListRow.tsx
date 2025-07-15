@@ -2,9 +2,9 @@ import type { FC } from 'react';
 import { Button } from 'react-bootstrap';
 import { Link } from 'react-router';
 import { FaTimes } from 'react-icons/fa';
-import type { AllOrdersResponse } from '../types';
+import type { OrderDetails } from '../types';
 
-type OrderListRowProps = { order: AllOrdersResponse };
+type OrderListRowProps = { order: OrderDetails };
 
 const OrderListRow: FC<OrderListRowProps> = ({ order }) => {
   return (

@@ -7,12 +7,10 @@ import type {
   CreateReviewResponse,
   CreateReviewRequest,
   GetProductsResponse,
+  PageNumber,
 } from '../types';
 
 type ProductId = string;
-type PageNumber = {
-  pageNumber: string;
-};
 
 export const productsApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({

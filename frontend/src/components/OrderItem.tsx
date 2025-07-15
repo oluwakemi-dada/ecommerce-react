@@ -1,11 +1,11 @@
 import type { FC } from 'react';
 import { Link } from 'react-router';
 import { Row, Col, ListGroup, Image } from 'react-bootstrap';
-import type { DbOrderItem } from '../types';
+import type { OrderItem as OrderItemType } from '../types';
 import { getFullImageUrl } from '../utils/imageUtils';
 
 type OrderItemProps = {
-  item: DbOrderItem;
+  item: OrderItemType;
 };
 
 const OrderItem: FC<OrderItemProps> = ({ item }) => {

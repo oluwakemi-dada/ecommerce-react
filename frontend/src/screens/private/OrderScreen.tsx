@@ -24,9 +24,9 @@ import { useSelector } from 'react-redux';
 import Message from '../../components/Message';
 import Loader from '../../components/Loader';
 import { getErrorMessage } from '../../utils/errorUtils';
+import OrderItem from '../../components/OrderItem';
 
 import type { RootState } from '../../types';
-import OrderItem from '../../components/OrderItem';
 
 const OrderScreen: FC = () => {
   const { id: orderId } = useParams();
@@ -47,8 +47,6 @@ const OrderScreen: FC = () => {
   } = useGetPayPalClientIdQuery();
 
   const { userInfo } = useSelector((state: RootState) => state.auth);
-
-  console.log(userInfo);
 
   useEffect(() => {
     if (!errorPayPal && !loadingPayPal && paypal?.clientId) {
@@ -79,7 +77,7 @@ const OrderScreen: FC = () => {
         }
       }
     }
-  }, [order, paypal?.clientId, paypalDispatch, loadingPay, errorPayPal]);
+  }, [order, paypal?.clientId, paypalDispatch, loadingPay, errorPayPal, loadingPayPal]);
 
   const onApprove = async (
     data: OnApproveData,
@@ -87,7 +85,8 @@ const OrderScreen: FC = () => {
   ): Promise<void> => {
     return actions.order!.capture().then(async function (details) {
       try {
-        await payOrder({ orderId: orderId!, details });
+        await payOrder({ orderId: orderId!, details }).unwrap();
+
         toast.success('Paymemt successful');
       } catch (error) {
         toast.error(getErrorMessage(error));
