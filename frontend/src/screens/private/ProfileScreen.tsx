@@ -141,7 +141,6 @@ const ProfileScreen: FC = () => {
             <Paginate
               pages={Number(data?.pages ?? 1)}
               page={Number(data?.page ?? 1)}
-              isAdmin={true}
               basePath='profile'
             />
           </>

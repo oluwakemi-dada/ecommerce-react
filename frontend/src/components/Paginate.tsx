@@ -7,6 +7,7 @@ type PagesProps = {
   page: number;
   isAdmin?: boolean;
   basePath?: string;
+  keyword?: string;
 };
 
 const Paginate: FC<PagesProps> = ({
@@ -14,20 +15,31 @@ const Paginate: FC<PagesProps> = ({
   page,
   isAdmin = false,
   basePath = '',
+  keyword = '',
 }) => {
   return (
     pages > 1 && (
       <Pagination>
-        {[...Array(pages).keys()].map((x) => (
-          <Pagination.Item
-            key={x + 1}
-            as={Link}
-            to={isAdmin ? `/${basePath}/page/${x + 1}` : `/page/${x + 1}`}
-            active={x + 1 === page}
-          >
-            {x + 1}
-          </Pagination.Item>
-        ))}
+        {[...Array(pages).keys()].map((x) => {
+          const pageNum = x + 1;
+
+          const link = isAdmin
+            ? `/${basePath}/page/${pageNum}`
+            : keyword
+              ? `/search/${keyword}/page/${pageNum}`
+              : `/page/${pageNum}`;
+
+          return (
+            <Pagination.Item
+              key={pageNum}
+              as={Link}
+              to={link}
+              active={pageNum === page}
+            >
+              {pageNum}
+            </Pagination.Item>
+          );
+        })}
       </Pagination>
     )
   );

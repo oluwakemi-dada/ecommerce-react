@@ -7,39 +7,44 @@ import Loader from '../components/Loader';
 import Message from '../components/Message';
 import { getErrorMessage } from '../utils/errorUtils';
 import type { Product as ProductType } from '../types';
-import { useParams } from 'react-router';
+import { Link, useParams } from 'react-router';
 import Paginate from '../components/Paginate';
 
 const HomeScreen: FC = () => {
-  const { pageNumber } = useParams();
+  const { pageNumber, keyword } = useParams();
 
   const { data, isLoading, error } = useGetProductsQuery({
+    keyword,
     pageNumber: pageNumber ?? '1',
   });
-
-  if (isLoading) {
-    return <Loader />;
-  }
-
-  if (error) {
-    return <Message variant='danger'>{getErrorMessage(error)}</Message>;
-  }
-
-  if (data?.products) {
-    return (
-      <>
-        <h1>Latest Products</h1>
-        <Row>
-          {data.products?.map((product: ProductType) => (
-            <Col key={product._id} sm={12} md={6} lg={4} xl={3}>
-              <Product product={product} />
-            </Col>
-          ))}
-        </Row>
-        <Paginate pages={data.pages} page={data.page} />
-      </>
-    );
-  }
+  return (
+    <>
+      {keyword && (
+        <Link to='/' className='btn btn-light mb-4'>
+          Go Back
+        </Link>
+      )}
+      {isLoading && <Loader />}
+      {error && <Message variant='danger'>{getErrorMessage(error)}</Message>}
+      {data?.products && (
+        <>
+          <h1>Latest Products</h1>
+          <Row>
+            {data.products?.map((product: ProductType) => (
+              <Col key={product._id} sm={12} md={6} lg={4} xl={3}>
+                <Product product={product} />
+              </Col>
+            ))}
+          </Row>
+          <Paginate
+            pages={data.pages}
+            page={data.page}
+            keyword={keyword ? keyword : ''}
+          />
+        </>
+      )}
+    </>
+  );
 };
 
 export default HomeScreen;

@@ -5,6 +5,7 @@ import { FaShoppingCart, FaUser } from 'react-icons/fa';
 import { useSelector, useDispatch } from 'react-redux';
 import { useLogoutMutation } from '../slices/userApiSlice';
 import { logout } from '../slices/authSlice';
+import SearchBox from './SearchBox';
 
 import logo from '../assets/logo.png';
 import type { AppDispatch, RootState } from '../types';
@@ -40,6 +41,7 @@ const Header: FC = () => {
           <Navbar.Toggle aria-controls='basic-navbar-nav' />
           <Navbar.Collapse id='basic-navbar-nav'>
             <Nav className='ms-auto'>
+              <SearchBox placeholder='Search products...' redirectPath='/' />
               <Nav.Link as={Link} to='/cart'>
                 <FaShoppingCart /> Cart
                 {cartItems.length > 0 && (
