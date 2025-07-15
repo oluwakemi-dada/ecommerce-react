@@ -43,6 +43,7 @@ const ProductListScreen: FC = () => {
     if (window.confirm('Are you sure you want to create a new product?')) {
       try {
         await createProduct();
+        toast.success('Product created')
       } catch (error) {
         toast.error(getErrorMessage(error));
       }

@@ -19,8 +19,6 @@ const UserListScreen: FC = () => {
     pageNumber: pageNumber ?? '1',
   });
 
-  console.log('users', data);
-
   const [deleteUser, { isLoading: loadingDelete }] = useDeleteUserMutation();
 
   const deleteHandler = async (id: string) => {

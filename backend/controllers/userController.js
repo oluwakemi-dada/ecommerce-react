@@ -132,7 +132,6 @@ const getUsers = asyncHandler(async (req, res) => {
 
   const users = await User.find({})
     .select('-password')
-    .sort({ createdAt: -1 })
     .limit(pageSize)
     .skip(pageSize * (page - 1));
 
