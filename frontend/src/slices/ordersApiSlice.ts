@@ -31,7 +31,7 @@ export const ordersApiSlice = apiSlice.injectEndpoints({
       query: (orderId) => ({
         url: `${ORDERS_URL}/${orderId}`,
       }),
-      providesTags: (result, error, id) => [{ type: 'Order', id }],
+      providesTags: (__result, _error, id) => [{ type: 'Order', id }],
       keepUnusedDataFor: 5, // 5secs
     }),
     payOrder: builder.mutation<PayOrderResponse, PayOrderRequest>({
@@ -42,7 +42,7 @@ export const ordersApiSlice = apiSlice.injectEndpoints({
           ...details,
         },
       }),
-      invalidatesTags: (result, error, { orderId }) => [
+      invalidatesTags: (_result, _error, { orderId }) => [
         { type: 'Order', id: orderId },
       ],
     }),
@@ -77,7 +77,7 @@ export const ordersApiSlice = apiSlice.injectEndpoints({
         url: `${ORDERS_URL}/${orderId}/deliver`,
         method: 'PUT',
       }),
-      invalidatesTags: (result, error, orderId) => [
+      invalidatesTags: (_result, _error, orderId) => [
         { type: 'Order', id: orderId },
       ],
     }),

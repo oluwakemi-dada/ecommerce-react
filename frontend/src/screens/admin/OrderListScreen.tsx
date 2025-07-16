@@ -5,7 +5,7 @@ import Loader from '../../components/Loader';
 import { useGetOrdersQuery } from '../../slices/ordersApiSlice';
 import { getErrorMessage } from '../../utils/errorUtils';
 import OrderListRow from '../../components/OrderListRow';
-import { useParams } from 'react-router';
+import { useParams } from 'react-router-dom';
 import Paginate from '../../components/Paginate';
 
 const OrderListScreen: FC = () => {

@@ -7,7 +7,7 @@ import Loader from '../components/Loader';
 import Message from '../components/Message';
 import { getErrorMessage } from '../utils/errorUtils';
 import type { Product as ProductType } from '../types';
-import { Link, useParams } from 'react-router';
+import { Link, useParams } from 'react-router-dom';
 import Paginate from '../components/Paginate';
 import ProductCarousel from '../components/ProductCarousel';
 

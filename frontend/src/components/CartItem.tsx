@@ -1,6 +1,6 @@
 import type { FC } from 'react';
 import { Col, Image, ListGroup, Row, Form, Button } from 'react-bootstrap';
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { addToCart, removeFromCart } from '../slices/cartSlice';
 import type { CartItem as CartItemType, Product, AppDispatch } from '../types';
@@ -26,7 +26,12 @@ const CartItem: FC<CartItemProps> = ({ item }) => {
     <ListGroup.Item>
       <Row>
         <Col md={2}>
-          <Image src={getFullImageUrl(item.image)} alt={item.name} fluid rounded />
+          <Image
+            src={getFullImageUrl(item.image)}
+            alt={item.name}
+            fluid
+            rounded
+          />
         </Col>
         <Col md={3}>
           <Link to={`/product/${item._id}`}>{item.name}</Link>

@@ -1,5 +1,5 @@
 import type { FC } from 'react';
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 import { Image, Carousel } from 'react-bootstrap';
 import Loader from './Loader';
 import Message from './Message';

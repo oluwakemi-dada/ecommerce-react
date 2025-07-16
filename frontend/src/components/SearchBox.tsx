@@ -1,6 +1,6 @@
 import { type FC, useState } from 'react';
 import { Form, Button } from 'react-bootstrap';
-import { useParams, useNavigate } from 'react-router';
+import { useParams, useNavigate } from 'react-router-dom';
 
 type SearchBoxType = {
   placeholder: string;

@@ -1,6 +1,6 @@
 import type { FC } from 'react';
 import { Button } from 'react-bootstrap';
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 import { FaTimes, FaTrash, FaEdit, FaCheck } from 'react-icons/fa';
 import type { User } from '../types';
 

@@ -9,7 +9,7 @@ import {
 } from '../../slices/userApiSlice';
 import { getErrorMessage } from '../../utils/errorUtils';
 import UserListRow from '../../components/UserListRow';
-import { useParams } from 'react-router';
+import { useParams } from 'react-router-dom';
 import Paginate from '../../components/Paginate';
 
 const UserListScreen: FC = () => {

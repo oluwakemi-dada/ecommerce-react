@@ -12,7 +12,7 @@ import { getErrorMessage } from '../../utils/errorUtils';
 
 import ProductListRow from '../../components/ProductListRow';
 import { toast } from 'react-toastify';
-import { useParams } from 'react-router';
+import { useParams } from 'react-router-dom';
 import Paginate from '../../components/Paginate';
 
 const ProductListScreen: FC = () => {
@@ -43,7 +43,7 @@ const ProductListScreen: FC = () => {
     if (window.confirm('Are you sure you want to create a new product?')) {
       try {
         await createProduct();
-        toast.success('Product created')
+        toast.success('Product created');
       } catch (error) {
         toast.error(getErrorMessage(error));
       }

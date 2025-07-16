@@ -1,5 +1,5 @@
 import type { FC } from 'react';
-import { Outlet, Navigate } from 'react-router';
+import { Outlet, Navigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import type { RootState } from '../types';
 

@@ -1,5 +1,5 @@
 import { type FC, useEffect } from 'react';
-import { useParams } from 'react-router';
+import { useParams } from 'react-router-dom';
 import { Row, Col, ListGroup, Card, Button } from 'react-bootstrap';
 import { toast } from 'react-toastify';
 import {
@@ -77,10 +77,17 @@ const OrderScreen: FC = () => {
         }
       }
     }
-  }, [order, paypal?.clientId, paypalDispatch, loadingPay, errorPayPal, loadingPayPal]);
+  }, [
+    order,
+    paypal?.clientId,
+    paypalDispatch,
+    loadingPay,
+    errorPayPal,
+    loadingPayPal,
+  ]);
 
   const onApprove = async (
-    data: OnApproveData,
+    _data: OnApproveData,
     actions: OnApproveActions
   ): Promise<void> => {
     return actions.order!.capture().then(async function (details) {
@@ -99,7 +106,7 @@ const OrderScreen: FC = () => {
   };
 
   const createOrder = async (
-    data: CreateOrderData,
+    _data: CreateOrderData,
     actions: CreateOrderActions
   ): Promise<string> => {
     return actions.order

@@ -1,5 +1,5 @@
 import { type FC, useState } from 'react';
-import { useNavigate } from 'react-router';
+import { useNavigate } from 'react-router-dom';
 import { Row, Col, ListGroup, Card, Button, Form } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
 import { addToCart } from '../slices/cartSlice';

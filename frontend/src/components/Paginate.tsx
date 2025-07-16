@@ -1,6 +1,6 @@
 import type { FC } from 'react';
 import { Pagination } from 'react-bootstrap';
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 
 type PagesProps = {
   pages: number;

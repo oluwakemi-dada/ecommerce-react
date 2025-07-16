@@ -10,7 +10,7 @@ import type { AppDispatch, RootState } from '../../types';
 import { getErrorMessage } from '../../utils/errorUtils';
 import { useGetMyOrdersQuery } from '../../slices/ordersApiSlice';
 import ProfileOrderItem from '../../components/ProfileOrderItem';
-import { useParams } from 'react-router';
+import { useParams } from 'react-router-dom';
 import Paginate from '../../components/Paginate';
 
 const ProfileScreen: FC = () => {

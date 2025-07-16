@@ -1,6 +1,6 @@
 import type { FC } from 'react';
 import { Card } from 'react-bootstrap';
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 
 import Rating from './Rating';
 import type { Product as ProductType } from '../types';

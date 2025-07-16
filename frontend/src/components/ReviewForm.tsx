@@ -1,5 +1,5 @@
 import { type FC, useState } from 'react';
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 import { ListGroup, Button, Form } from 'react-bootstrap';
 import { toast } from 'react-toastify';
 import { useSelector } from 'react-redux';

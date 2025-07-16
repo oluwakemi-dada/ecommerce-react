@@ -1,5 +1,5 @@
 import type { FC } from 'react';
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 import { Row, Col, ListGroup, Image } from 'react-bootstrap';
 import type { OrderItem as OrderItemType } from '../types';
 import { getFullImageUrl } from '../utils/imageUtils';
@@ -13,7 +13,12 @@ const OrderItem: FC<OrderItemProps> = ({ item }) => {
     <ListGroup.Item>
       <Row>
         <Col md={1}>
-          <Image src={getFullImageUrl(item.image)} alt={item.name} fluid rounded />
+          <Image
+            src={getFullImageUrl(item.image)}
+            alt={item.name}
+            fluid
+            rounded
+          />
         </Col>
         <Col>
           <Link to={`/product/${item.product}`}>{item.name}</Link>

@@ -1,5 +1,5 @@
 import { type FC, useEffect } from 'react';
-import { useNavigate } from 'react-router';
+import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { Button, Row, Col, ListGroup, Card } from 'react-bootstrap';
 import { toast } from 'react-toastify';

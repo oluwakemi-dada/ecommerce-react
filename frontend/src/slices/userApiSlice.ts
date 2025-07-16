@@ -17,7 +17,6 @@ type DeleteUser = {
   message: string;
 };
 
-
 export const usersApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
     login: builder.mutation<User, UserLogin>({
@@ -69,7 +68,7 @@ export const usersApiSlice = apiSlice.injectEndpoints({
       query: (userId) => ({
         url: `${USERS_URL}/${userId}`,
       }),
-      providesTags: (result, error, userId) => [{ type: 'User', id: userId }],
+      providesTags: (_result, _error, userId) => [{ type: 'User', id: userId }],
       keepUnusedDataFor: 5,
     }),
     updateUser: builder.mutation<UsersListItem, User>({
@@ -78,7 +77,7 @@ export const usersApiSlice = apiSlice.injectEndpoints({
         method: 'PUT',
         body: data,
       }),
-      invalidatesTags: (result, error, user) => [
+      invalidatesTags: (_result, _error, user) => [
         'Users',
         { type: 'User', id: user._id },
       ],

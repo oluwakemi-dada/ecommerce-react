@@ -1,6 +1,6 @@
 import type { FC } from 'react';
 import { Nav } from 'react-bootstrap';
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 
 type CheckoutStepsProps = {
   step1?: boolean;

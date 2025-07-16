@@ -1,5 +1,5 @@
 import type { FC } from 'react';
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 import { FaEdit, FaTrash } from 'react-icons/fa';
 import type { Product } from '../types';
 import { Button } from 'react-bootstrap';
@@ -9,10 +9,7 @@ type ProductListRowProps = {
   onDelete: (id: string) => void;
 };
 
-const ProductListRow: FC<ProductListRowProps> = ({
-  product,
-  onDelete,
-}) => {
+const ProductListRow: FC<ProductListRowProps> = ({ product, onDelete }) => {
   return (
     <tr>
       <td>{product._id}</td>

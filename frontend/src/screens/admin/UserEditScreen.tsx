@@ -1,5 +1,5 @@
 import { type FC, useState, useEffect } from 'react';
-import { Link, useNavigate, useParams } from 'react-router';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import { Form, Button } from 'react-bootstrap';
 import Message from '../../components/Message';
 import Loader from '../../components/Loader';

@@ -1,5 +1,5 @@
 import { type FC } from 'react';
-import { Link, useParams } from 'react-router';
+import { Link, useParams } from 'react-router-dom';
 import { Row, Col, Image, ListGroup } from 'react-bootstrap';
 import { useGetProductDetailsQuery } from '../slices/productsApiSlice';
 import Loader from '../components/Loader';

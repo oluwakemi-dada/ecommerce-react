@@ -1,5 +1,5 @@
 import { type FC, useState, useEffect } from 'react';
-import { Link, useLocation, useNavigate } from 'react-router';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { useRegisterMutation } from '../slices/userApiSlice';
 import { setCredentials } from '../slices/authSlice';

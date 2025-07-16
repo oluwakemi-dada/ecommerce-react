@@ -1,4 +1,4 @@
-import { Routes, Route, BrowserRouter } from 'react-router';
+import { Routes, Route, BrowserRouter } from 'react-router-dom';
 import { PayPalScriptProvider } from '@paypal/react-paypal-js';
 import { useGetPayPalClientIdQuery } from '../slices/ordersApiSlice.ts';
 
@@ -36,7 +36,10 @@ const AppRoutes = () => {
               <Route index element={<HomeScreen />} />
               <Route path='/search/:keyword' element={<HomeScreen />} />
               <Route path='/page/:pageNumber' element={<HomeScreen />} />
-              <Route path='/search/:keyword/page/:pageNumber' element={<HomeScreen />} />
+              <Route
+                path='/search/:keyword/page/:pageNumber'
+                element={<HomeScreen />}
+              />
               <Route path='/product/:id' element={<ProductScreen />} />
               <Route path='/cart' element={<CartScreen />} />
               <Route path='/login' element={<LoginScreen />} />
