@@ -12,8 +12,8 @@ import type { AppDispatch, RootState } from '../types';
 import { getErrorMessage } from '../utils/errorUtils';
 
 const LoginScreen: FC = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState('admin@email.com');
+  const [password, setPassword] = useState('123456');
 
   const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate();
