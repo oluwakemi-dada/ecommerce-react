@@ -13,9 +13,11 @@ type ProductProps = {
 const Product: FC<ProductProps> = ({ product }) => {
   return (
     <Card className='my-3 p-3 rounded '>
-      <Link to={`/product/${product._id}`}>
-        <Card.Img src={getFullImageUrl(product.image)} variant='top' />
-      </Link>
+      {product._id && (
+        <Link to={`/product/${product._id}`}>
+          <Card.Img src={getFullImageUrl(product.image)} variant='top' />
+        </Link>
+      )}
 
       <Card.Body>
         <Link to={`/product/${product._id}`}>

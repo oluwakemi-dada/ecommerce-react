@@ -40,7 +40,12 @@ const PlaceOrderScreen: FC = () => {
       }).unwrap();
 
       dispatch(clearCartItems());
-      navigate(`/order/${res._id}`);
+
+      if (res?._id) {
+        navigate(`/order/${res._id}`);
+      } else {
+        console.error('❌ Invalid order ID:', res);
+      }
     } catch (error) {
       toast.error(getErrorMessage(error));
     }

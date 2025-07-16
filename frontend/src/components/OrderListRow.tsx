@@ -28,11 +28,13 @@ const OrderListRow: FC<OrderListRowProps> = ({ order }) => {
         )}
       </td>
       <td>
-        <Link to={`/order/${order._id}`}>
-          <Button variant='light' className='btn-sm'>
-            Details
-          </Button>
-        </Link>
+        {order._id && (
+          <Link to={`/order/${order._id}`}>
+            <Button variant='light' className='btn-sm'>
+              Details
+            </Button>
+          </Link>
+        )}
       </td>
     </tr>
   );

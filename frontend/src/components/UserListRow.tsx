@@ -34,14 +34,16 @@ const UserListRow: FC<UserListRowProps> = ({ user, deleteHandler }) => {
       </td>
 
       <td>
-        <Link
-          to={`/admin/user/${user._id}/edit`}
-          aria-label={`Edit user ${user.name}`}
-        >
-          <Button variant='light' className='btn-sm'>
-            <FaEdit />
-          </Button>
-        </Link>
+        {user._id && (
+          <Link
+            to={`/admin/user/${user._id}/edit`}
+            aria-label={`Edit user ${user.name}`}
+          >
+            <Button variant='light' className='btn-sm'>
+              <FaEdit />
+            </Button>
+          </Link>
+        )}
         <Button
           variant='danger'
           className='btn-sm'

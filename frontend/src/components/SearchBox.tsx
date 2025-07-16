@@ -15,9 +15,11 @@ const SearchBox: FC<SearchBoxType> = ({ placeholder, redirectPath = '/' }) => {
   const submitHandler = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    if (keyword.trim()) {
+    const trimmedKeyword = keyword.trim();
+
+    if (trimmedKeyword) {
+      navigate(`/search/${trimmedKeyword}`);
       setKeyword('');
-      navigate(`/search/${keyword}`);
     } else {
       navigate(redirectPath);
     }
