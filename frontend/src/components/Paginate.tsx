@@ -13,7 +13,6 @@ type PagesProps = {
 const Paginate: FC<PagesProps> = ({
   pages,
   page,
-  isAdmin = false,
   basePath = '',
   keyword = '',
 }) => {
@@ -23,7 +22,7 @@ const Paginate: FC<PagesProps> = ({
         {[...Array(pages).keys()].map((x) => {
           const pageNum = x + 1;
 
-          const link = isAdmin
+          const link = basePath
             ? `/${basePath}/page/${pageNum}`
             : keyword
               ? `/search/${keyword}/page/${pageNum}`

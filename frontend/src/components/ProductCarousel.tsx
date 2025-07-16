@@ -1,17 +1,15 @@
 import type { FC } from 'react';
 import { Link } from 'react-router-dom';
 import { Image, Carousel } from 'react-bootstrap';
-import Loader from './Loader';
 import Message from './Message';
 import { useGetTopProductsQuery } from '../slices/productsApiSlice';
 import { getErrorMessage } from '../utils/errorUtils';
 
 const ProductCarousel: FC = () => {
-  const { data: products, isLoading, error } = useGetTopProductsQuery();
+  const { data: products, error } = useGetTopProductsQuery();
 
   return (
     <>
-      {isLoading && <Loader />}
       {error && <Message variant='danger'>{getErrorMessage(error)}</Message>}
 
       {products && (

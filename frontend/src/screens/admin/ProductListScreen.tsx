@@ -95,7 +95,6 @@ const ProductListScreen: FC = () => {
           <Paginate
             pages={data?.pages ?? 1}
             page={data?.page ?? 1}
-            isAdmin={true}
             basePath='admin/productlist'
           />
         </>
