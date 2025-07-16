@@ -6,6 +6,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useLogoutMutation } from '../slices/userApiSlice';
 import { logout } from '../slices/authSlice';
 import SearchBox from './SearchBox';
+import { resetCart } from '../slices/cartSlice';
 
 import logo from '../assets/logo.png';
 import type { AppDispatch, RootState } from '../types';
@@ -23,6 +24,7 @@ const Header: FC = () => {
     try {
       await logoutApiCall().unwrap();
       dispatch(logout());
+      dispatch(resetCart());
       navigate('/login');
     } catch (error) {
       console.log(error);
