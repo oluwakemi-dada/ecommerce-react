@@ -1,14 +1,13 @@
-import type { FC } from 'react';
 import { Link } from 'react-router-dom';
 import { Row, Col, ListGroup, Image } from 'react-bootstrap';
 import type { OrderItem as OrderItemType } from '../types';
 import { getFullImageUrl } from '../utils/imageUtils';
 
-type OrderItemProps = {
+type Props = {
   item: OrderItemType;
 };
 
-const OrderItem: FC<OrderItemProps> = ({ item }) => {
+const OrderItem = ({ item }: Props) => {
   return (
     <ListGroup.Item>
       <Row>

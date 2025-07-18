@@ -1,4 +1,4 @@
-import { type FC, useState } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ListGroup, Button, Form } from 'react-bootstrap';
 import { toast } from 'react-toastify';
@@ -9,9 +9,9 @@ import Loader from './Loader';
 import Message from './Message';
 import type { RootState } from '../types';
 
-type ReviewFormProps = { productId: string };
+type Props = { productId: string };
 
-const ReviewForm: FC<ReviewFormProps> = ({ productId }) => {
+const ReviewForm = ({ productId }: Props) => {
   const [rating, setRating] = useState(0);
   const [comment, setComment] = useState('');
 

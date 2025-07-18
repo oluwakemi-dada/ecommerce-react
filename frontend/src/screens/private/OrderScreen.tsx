@@ -1,4 +1,4 @@
-import { type FC, useEffect } from 'react';
+import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { Row, Col, ListGroup, Card, Button } from 'react-bootstrap';
 import { toast } from 'react-toastify';
@@ -28,7 +28,7 @@ import OrderItem from '../../components/OrderItem';
 
 import type { RootState } from '../../types';
 
-const OrderScreen: FC = () => {
+const OrderScreen = () => {
   const { id: orderId } = useParams();
 
   const { data: order, isLoading, error } = useGetOrderDetailsQuery(orderId!);

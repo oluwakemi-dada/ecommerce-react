@@ -1,13 +1,11 @@
-import type { FC } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { Row, Col, ListGroup, Button, Card } from 'react-bootstrap';
-
 import Message from '../components/Message';
 import CartItem from '../components/CartItem';
 import type { RootState } from '../types';
 
-const CartScreen: FC = () => {
+const CartScreen = () => {
   const navigate = useNavigate();
 
   const cart = useSelector((state: RootState) => state.cart);

@@ -1,4 +1,4 @@
-import { type FC, useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { Form, Button } from 'react-bootstrap';
 import Message from '../../components/Message';
@@ -12,7 +12,7 @@ import {
 } from '../../slices/productsApiSlice';
 import { getErrorMessage } from '../../utils/errorUtils';
 
-const ProductEditScreen: FC = () => {
+const ProductEditScreen = () => {
   const { id: productId } = useParams();
 
   const [name, setName] = useState('');

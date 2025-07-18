@@ -1,4 +1,4 @@
-import { type FC, useEffect } from 'react';
+import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { Button, Row, Col, ListGroup, Card } from 'react-bootstrap';
@@ -12,7 +12,7 @@ import { clearCartItems } from '../../slices/cartSlice';
 import { getErrorMessage } from '../../utils/errorUtils';
 import PlaceOrderCartItem from '../../components/PlaceOrderCartItem';
 
-const PlaceOrderScreen: FC = () => {
+const PlaceOrderScreen = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch<AppDispatch>();
   const cart = useSelector((state: RootState) => state.cart);

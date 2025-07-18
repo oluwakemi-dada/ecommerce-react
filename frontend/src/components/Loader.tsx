@@ -1,7 +1,6 @@
-import type { FC } from 'react';
 import { Spinner } from 'react-bootstrap';
 
-const Loader: FC = () => {
+const Loader = () => {
   return (
     <Spinner
       animation='border'

@@ -1,14 +1,13 @@
-import type { FC } from 'react';
 import { Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { FaTimes } from 'react-icons/fa';
 import type { MyOrder } from '../types';
 
-type ProfileOrderItemProps = {
+type Props = {
   order: MyOrder;
 };
 
-const ProfileOrderItem: FC<ProfileOrderItemProps> = ({ order }) => {
+const ProfileOrderItem = ({ order }: Props) => {
   return (
     <tr>
       <td>{order._id}</td>

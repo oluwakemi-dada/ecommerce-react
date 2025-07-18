@@ -1,15 +1,14 @@
-import type { FC } from 'react';
 import { Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { FaTimes, FaTrash, FaEdit, FaCheck } from 'react-icons/fa';
 import type { User } from '../types';
 
-type UserListRowProps = {
+type Props = {
   user: User;
   deleteHandler: (id: string) => void;
 };
 
-const UserListRow: FC<UserListRowProps> = ({ user, deleteHandler }) => {
+const UserListRow = ({ user, deleteHandler }: Props) => {
   return (
     <tr>
       <td>{user._id}</td>

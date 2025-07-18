@@ -1,4 +1,3 @@
-import { type FC } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { Row, Col, Image, ListGroup } from 'react-bootstrap';
 import { useGetProductDetailsQuery } from '../slices/productsApiSlice';
@@ -11,7 +10,7 @@ import Review from '../components/Review';
 import ReviewForm from '../components/ReviewForm';
 import AddToCartForm from '../components/AddToCartForm';
 
-const ProductScreen: FC = () => {
+const ProductScreen = () => {
   const { id: productId } = useParams<{ id: string }>();
 
   const {

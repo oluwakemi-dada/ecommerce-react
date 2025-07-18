@@ -1,4 +1,4 @@
-import { type FC, useState } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Row, Col, ListGroup, Card, Button, Form } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
@@ -6,11 +6,11 @@ import { addToCart } from '../slices/cartSlice';
 import type { AppDispatch } from '../types';
 import type { Product } from '../types';
 
-type AddToCartFormProps = {
+type Props = {
   product: Product;
 };
 
-const AddToCartForm: FC<AddToCartFormProps> = ({ product }) => {
+const AddToCartForm = ({ product }: Props) => {
   const [qty, setQty] = useState(1);
 
   const dispatch = useDispatch<AppDispatch>();

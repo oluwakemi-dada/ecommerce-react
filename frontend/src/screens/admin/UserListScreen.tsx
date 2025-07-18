@@ -1,4 +1,3 @@
-import type { FC } from 'react';
 import { Table } from 'react-bootstrap';
 import { toast } from 'react-toastify';
 import Message from '../../components/Message';
@@ -12,7 +11,7 @@ import UserListRow from '../../components/UserListRow';
 import { useParams } from 'react-router-dom';
 import Paginate from '../../components/Paginate';
 
-const UserListScreen: FC = () => {
+const UserListScreen = () => {
   const { pageNumber } = useParams();
 
   const { data, isLoading, error } = useGetUsersQuery({

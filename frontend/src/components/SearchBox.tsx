@@ -1,13 +1,13 @@
-import { type FC, useState } from 'react';
+import { useState } from 'react';
 import { Form, Button } from 'react-bootstrap';
 import { useParams, useNavigate } from 'react-router-dom';
 
-type SearchBoxType = {
+type Props = {
   placeholder: string;
   redirectPath?: string;
 };
 
-const SearchBox: FC<SearchBoxType> = ({ placeholder, redirectPath = '/' }) => {
+const SearchBox = ({ placeholder, redirectPath = '/' }: Props) => {
   const navigate = useNavigate();
   const { keyword: urlKeyword } = useParams();
   const [keyword, setKeyword] = useState(urlKeyword || '');

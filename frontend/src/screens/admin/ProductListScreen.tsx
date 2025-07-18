@@ -1,4 +1,3 @@
-import type { FC } from 'react';
 import { Table, Row, Col, Button } from 'react-bootstrap';
 import { FaEdit } from 'react-icons/fa';
 import Message from '../../components/Message';
@@ -15,7 +14,7 @@ import { toast } from 'react-toastify';
 import { useParams } from 'react-router-dom';
 import Paginate from '../../components/Paginate';
 
-const ProductListScreen: FC = () => {
+const ProductListScreen = () => {
   const { pageNumber } = useParams();
 
   const { data, isLoading, error } = useGetProductsQuery({

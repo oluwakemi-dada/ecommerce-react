@@ -1,12 +1,11 @@
-import type { FC } from 'react';
 import { Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { FaTimes } from 'react-icons/fa';
 import type { OrderDetails } from '../types';
 
-type OrderListRowProps = { order: OrderDetails };
+type Props = { order: OrderDetails };
 
-const OrderListRow: FC<OrderListRowProps> = ({ order }) => {
+const OrderListRow = ({ order }: Props) => {
   return (
     <tr>
       <td>{order._id}</td>

@@ -1,4 +1,4 @@
-import { type FC, useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { Form, Button, Col } from 'react-bootstrap';
@@ -9,7 +9,7 @@ import type { AppDispatch, RootState } from '../../types';
 
 type PaymentMethod = 'PayPal';
 
-const PaymentScreen: FC = () => {
+const PaymentScreen = () => {
   const [paymentMethod, setPaymentMethod] = useState<PaymentMethod>('PayPal');
 
   const dispatch = useDispatch<AppDispatch>();

@@ -1,16 +1,14 @@
-import type { FC } from 'react';
 import { Card } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-
 import Rating from './Rating';
 import type { Product as ProductType } from '../types';
 import { getFullImageUrl } from '../utils/imageUtils';
 
-type ProductProps = {
+type Props = {
   product: ProductType;
 };
 
-const Product: FC<ProductProps> = ({ product }) => {
+const Product = ({ product }: Props) => {
   return (
     <Card className='my-3 p-3 rounded '>
       {product._id && (

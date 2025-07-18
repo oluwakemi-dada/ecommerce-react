@@ -1,11 +1,10 @@
-import type { FC } from 'react';
 import { Link } from 'react-router-dom';
 import { Image, Carousel } from 'react-bootstrap';
 import Message from './Message';
 import { useGetTopProductsQuery } from '../slices/productsApiSlice';
 import { getErrorMessage } from '../utils/errorUtils';
 
-const ProductCarousel: FC = () => {
+const ProductCarousel = () => {
   const { data: products, error } = useGetTopProductsQuery();
 
   return (

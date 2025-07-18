@@ -1,4 +1,4 @@
-import { type FC, useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Table, Form, Button, Row, Col } from 'react-bootstrap';
 import { useSelector, useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
@@ -13,7 +13,7 @@ import ProfileOrderItem from '../../components/ProfileOrderItem';
 import { useParams } from 'react-router-dom';
 import Paginate from '../../components/Paginate';
 
-const ProfileScreen: FC = () => {
+const ProfileScreen = () => {
   const { pageNumber } = useParams();
 
   const [name, setName] = useState('');

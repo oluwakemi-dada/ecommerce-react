@@ -1,4 +1,3 @@
-import type { FC } from 'react';
 import { Col, Image, ListGroup, Row, Form, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
@@ -7,11 +6,11 @@ import type { CartItem as CartItemType, Product, AppDispatch } from '../types';
 import { FaTrash } from 'react-icons/fa';
 import { getFullImageUrl } from '../utils/imageUtils';
 
-type CartItemProps = {
+type Props = {
   item: CartItemType;
 };
 
-const CartItem: FC<CartItemProps> = ({ item }) => {
+const CartItem = ({ item }: Props) => {
   const dispatch = useDispatch<AppDispatch>();
 
   const addToCartHandler = async (product: Product, qty: number) => {

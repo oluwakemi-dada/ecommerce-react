@@ -1,13 +1,12 @@
-import type { FC } from 'react';
 import { ListGroup } from 'react-bootstrap';
 import type { Review as ReviewType } from '../types';
 import Rating from './Rating';
 
-type ReviewProps = {
+type Props = {
   review: ReviewType;
 };
 
-const Review: FC<ReviewProps> = ({ review }) => {
+const Review = ({ review }: Props) => {
   return (
     <ListGroup.Item>
       <strong>{review.name}</strong>

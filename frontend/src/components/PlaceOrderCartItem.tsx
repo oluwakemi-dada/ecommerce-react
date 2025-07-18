@@ -1,14 +1,13 @@
-import type { FC } from 'react';
 import { Link } from 'react-router-dom';
 import { Row, Col, ListGroup, Image } from 'react-bootstrap';
 import type { CartItem } from '../types';
 import { getFullImageUrl } from '../utils/imageUtils';
 
-type PlaceOrderCartItemProps = {
+type Props = {
   item: CartItem;
 };
 
-const PlaceOrderCartItem: FC<PlaceOrderCartItemProps> = ({ item }) => {
+const PlaceOrderCartItem = ({ item }: Props) => {
   return (
     <ListGroup.Item>
       <Row>

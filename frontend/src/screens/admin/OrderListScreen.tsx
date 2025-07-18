@@ -1,4 +1,3 @@
-import type { FC } from 'react';
 import { Table } from 'react-bootstrap';
 import Message from '../../components/Message';
 import Loader from '../../components/Loader';
@@ -8,7 +7,7 @@ import OrderListRow from '../../components/OrderListRow';
 import { useParams } from 'react-router-dom';
 import Paginate from '../../components/Paginate';
 
-const OrderListScreen: FC = () => {
+const OrderListScreen = () => {
   const { pageNumber } = useParams();
 
   const { data, isLoading, error } = useGetOrdersQuery({

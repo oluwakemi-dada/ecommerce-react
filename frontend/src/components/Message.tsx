@@ -1,12 +1,11 @@
-import type { FC } from 'react';
 import { Alert } from 'react-bootstrap';
 
-type MessageProps = {
+type Props = {
   variant?: 'success' | 'danger' | 'warning' | 'info';
   children: React.ReactNode;
 };
 
-const Message: FC<MessageProps> = ({ variant = 'info', children }) => {
+const Message = ({ variant = 'info', children }: Props) => {
   return <Alert variant={variant}>{children}</Alert>;
 };
 

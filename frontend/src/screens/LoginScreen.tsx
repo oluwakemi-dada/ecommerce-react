@@ -1,4 +1,4 @@
-import { type FC, useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { useLoginMutation } from '../slices/userApiSlice';
@@ -11,7 +11,7 @@ import FormContainer from '../components/FormContainer';
 import type { AppDispatch, RootState } from '../types';
 import { getErrorMessage } from '../utils/errorUtils';
 
-const LoginScreen: FC = () => {
+const LoginScreen = () => {
   const [email, setEmail] = useState('admin@email.com');
   const [password, setPassword] = useState('123456');
 

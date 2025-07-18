@@ -1,7 +1,5 @@
-import type { FC } from 'react';
 import { Row, Col } from 'react-bootstrap';
 import { useGetProductsQuery } from '../slices/productsApiSlice';
-
 import Product from '../components/Product';
 import Loader from '../components/Loader';
 import Message from '../components/Message';
@@ -11,7 +9,7 @@ import { Link, useParams } from 'react-router-dom';
 import Paginate from '../components/Paginate';
 import ProductCarousel from '../components/ProductCarousel';
 
-const HomeScreen: FC = () => {
+const HomeScreen = () => {
   const { pageNumber, keyword } = useParams();
 
   const { data, isLoading, error } = useGetProductsQuery({

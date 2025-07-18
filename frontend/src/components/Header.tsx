@@ -1,4 +1,3 @@
-import type { FC } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Navbar, Nav, Container, Badge, NavDropdown } from 'react-bootstrap';
 import { FaShoppingCart, FaUser } from 'react-icons/fa';
@@ -11,7 +10,7 @@ import { resetCart } from '../slices/cartSlice';
 import logo from '../assets/logo.png';
 import type { AppDispatch, RootState } from '../types';
 
-const Header: FC = () => {
+const Header = () => {
   const { cartItems } = useSelector((state: RootState) => state.cart);
   const { userInfo } = useSelector((state: RootState) => state.auth);
 
