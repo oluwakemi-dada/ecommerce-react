@@ -1,4 +1,4 @@
-const API_URL = 'http://localhost:5001';
+const API_URL = 'https://ecommerce-react-app-y8le.onrender.com';
 
 export const getFullImageUrl = (path: string) => {
   if (!path) return '';
