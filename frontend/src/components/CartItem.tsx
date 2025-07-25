@@ -55,6 +55,7 @@ const CartItem = ({ item }: Props) => {
           <Button
             type='button'
             variant='light'
+            aria-label={`delete cart item: ${item.name}`}
             onClick={() => removeFromCartHandler(item._id)}
           >
             <FaTrash />

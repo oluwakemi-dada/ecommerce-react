@@ -18,13 +18,18 @@ const ProductListRow = ({ product, onDelete }: Props) => {
       <td>{product.brand}</td>
       <td>
         <Link to={`/admin/product/${product._id}/edit`}>
-          <Button variant='light' className='btn-sm mx-2'>
+          <Button
+            variant='light'
+            className='btn-sm mx-2'
+            aria-label={`edit product: ${product.name}`}
+          >
             <FaEdit />
           </Button>
         </Link>
         <Button
           variant='danger'
           className='btn-sm'
+          aria-label={`delete product: ${product.name}`}
           onClick={() => onDelete(product._id)}
         >
           <FaTrash style={{ color: 'white' }} />

@@ -34,11 +34,12 @@ const UserListRow = ({ user, deleteHandler }: Props) => {
 
       <td>
         {user._id && (
-          <Link
-            to={`/admin/user/${user._id}/edit`}
-            aria-label={`Edit user ${user.name}`}
-          >
-            <Button variant='light' className='btn-sm'>
+          <Link to={`/admin/user/${user._id}/edit`}>
+            <Button
+              variant='light'
+              aria-label={`Edit user: ${user.name}`}
+              className='btn-sm'
+            >
               <FaEdit />
             </Button>
           </Link>
@@ -47,7 +48,7 @@ const UserListRow = ({ user, deleteHandler }: Props) => {
           variant='danger'
           className='btn-sm'
           onClick={() => deleteHandler(user._id)}
-          aria-label={`Delete user ${user.name}`}
+          aria-label={`Delete user: ${user.name}`}
         >
           <FaTrash style={{ color: 'white' }} />
         </Button>
